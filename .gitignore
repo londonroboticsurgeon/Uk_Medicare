@@ -3,6 +3,8 @@
 !.env.example
 node_modules/
 dist/
+dist-ssr/
+coverage/
 artifacts/
 .playwright-mcp/
 Feedback Cards/
@@ -15,6 +17,10 @@ public/*
 !public/patient-feedback-clean/
 !public/patient-feedback-clean/*.jpg
 !public/hero_bg_davinci_sheth.png
+!public/hero-davinci-640.webp
+!public/hero-davinci-960.webp
+!public/hero-davinci-1440.webp
+!public/llms.txt
 !public/robots.txt
 !public/sitemap.xml
 !public/sheth_caduceus_emblem.png

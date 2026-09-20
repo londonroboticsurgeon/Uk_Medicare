@@ -20,11 +20,10 @@ export const NavBar: React.FC<NavBarProps> = ({
 
   const navItems = [
     { id: 'HOME', label: 'HOME', href: '/' },
-    { id: 'ABOUT', label: 'ABOUT', href: '/#about' },
+    { id: 'ABOUT', label: 'ABOUT', href: '/about-prof-hemant-sheth' },
     { id: 'ROBOTIC', label: 'ROBOTIC SURGERY', href: '/robotic-surgery' },
     { id: 'TREATMENTS', label: 'TREATMENTS & SPECIALTIES', href: '/treatments' },
-    { id: 'LOCATIONS', label: 'LOCATIONS', href: '/#clinics' },
-    { id: 'PATIENT_INFO', label: 'FAQS', href: '/#faqs' },
+    { id: 'LOCATIONS', label: 'LOCATIONS', href: '/locations' },
     { id: 'CONTACT', label: 'CONTACT', href: '#' },
   ];
 

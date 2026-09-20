@@ -4,7 +4,7 @@ import {
   ClinicAvailabilityFilter,
   ClinicLocation,
   clinicAvailabilityFilters,
-  clinicLocations,
+  publicClinicLocations,
   getClinicAvailability,
   hasClinicAvailabilityForFilter,
 } from '../../data/clinics';
@@ -128,7 +128,7 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
   const cameraTimersRef = useRef<number[]>([]);
 
   const clinics = useMemo(
-    () => clinicLocations.filter((clinic) => clinic.coordinateStatus === 'verified'),
+    () => publicClinicLocations.filter((clinic) => clinic.coordinateStatus === 'verified'),
     []
   );
   const [availabilityFilter, setAvailabilityFilter] = useState<ClinicAvailabilityFilter>('all');

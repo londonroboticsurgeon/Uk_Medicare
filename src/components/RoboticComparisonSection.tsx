@@ -3,9 +3,15 @@ import { roboticOverview } from '../data/roboticData';
 
 interface RoboticComparisonSectionProps {
   onOpenBooking?: () => void;
+  asPageHeading?: boolean;
 }
 
-export const RoboticComparisonSection: React.FC<RoboticComparisonSectionProps> = ({ onOpenBooking }) => {
+export const RoboticComparisonSection: React.FC<RoboticComparisonSectionProps> = ({
+  onOpenBooking,
+  asPageHeading = false,
+}) => {
+  const Heading = asPageHeading ? 'h1' : 'h2';
+
   return (
     <section
       id="robotic-comparison"
@@ -17,12 +23,12 @@ export const RoboticComparisonSection: React.FC<RoboticComparisonSectionProps> =
           <p className="text-eyebrow text-[#38bdf8]">
             Compare approaches
           </p>
-          <h2
+          <Heading
             className="text-section-title text-white"
             style={{ fontFamily: '"Source Serif 4", Georgia, serif' }}
           >
             Open, laparoscopic or robotic — how they differ
-          </h2>
+          </Heading>
           <p className="text-body text-sky-100">
             Diagnosis, anatomy and hospital pathway determine which approach suits you. This is a general guide, not a recommendation.
           </p>

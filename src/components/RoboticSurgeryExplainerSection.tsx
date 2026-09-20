@@ -59,13 +59,13 @@ export const RoboticSurgeryExplainerSection: React.FC<RoboticSurgeryExplainerSec
             <div className="w-10 h-[2px] bg-[#38bdf8] mt-2 rounded-full shadow-[0_0_8px_rgba(56,189,248,0.7)]" />
           </div>
 
-          <h2
+          <h1
             className="text-section-title text-white"
             style={{ fontFamily: '"Source Serif 4", Georgia, serif' }}
           >
             Robotic surgery, <br />
             clearly explained.
-          </h2>
+          </h1>
 
           <p className="text-lead text-sky-100 max-w-[560px]">
             Robotic-assisted surgery uses small incisions, a console, specialist instruments and a magnified 3D view.

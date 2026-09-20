@@ -40,7 +40,7 @@ function buildMessageBody(payload: ConsultationRequestPayload): string {
       : 'Self-funding (direct pay)';
 
   const lines = [
-    'New consultation request from keyholesurgeon.co.uk',
+    'New consultation request from londonroboticsurgeon.co.uk',
     '',
     `Funding: ${funding}`,
     `Hospital: ${payload.selectedHospital}`,

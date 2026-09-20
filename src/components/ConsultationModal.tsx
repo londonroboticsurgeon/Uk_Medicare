@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, CheckCircle2, ArrowRight } from 'lucide-react';
 import {
-  clinicLocations,
+  publicClinicLocations,
   formatClinicAvailability,
   getClinicAvailabilitySummary,
 } from '../data/clinics';
@@ -25,7 +25,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   preselectedClinicId,
 }) => {
   const [patientType, setPatientType] = useState<'insured' | 'selfpay'>('insured');
-  const [selectedHospital, setSelectedHospital] = useState<string>(clinicLocations[0].name);
+  const [selectedHospital, setSelectedHospital] = useState<string>(publicClinicLocations[0].name);
   const [procedure, setProcedure] = useState<string>(preselectedProcedure || 'Robotic Surgery Assessment');
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
@@ -42,14 +42,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const previouslyFocusedElement = useRef<HTMLElement | null>(null);
 
   const verifiedPhone = getVerifiedContact(contactInfo.generalPhone);
-  const verifiedEmail = getVerifiedContact(contactInfo.email);
-  const verifiedTurnaround = getVerifiedContact(contactInfo.enquiryTurnaround);
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const matchingClinic = clinicLocations.find((clinic) => clinic.id === preselectedClinicId);
-    setSelectedHospital(matchingClinic?.name ?? clinicLocations[0].name);
+    const matchingClinic = publicClinicLocations.find((clinic) => clinic.id === preselectedClinicId);
+    setSelectedHospital(matchingClinic?.name ?? publicClinicLocations[0].name);
     setPreferredDays('Any listed clinic time');
     setProcedure(preselectedProcedure || 'Robotic Surgery Assessment');
   }, [isOpen, preselectedClinicId, preselectedProcedure]);
@@ -156,7 +154,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const inputClass = 'w-full text-base leading-6 p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#294363]';
   const compactInputClass = 'w-full text-base leading-6 p-3 rounded-lg border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#294363]';
   const selectedClinic =
-    clinicLocations.find((clinic) => clinic.name === selectedHospital) ?? clinicLocations[0];
+    publicClinicLocations.find((clinic) => clinic.name === selectedHospital) ?? publicClinicLocations[0];
 
   return (
     <div
@@ -251,7 +249,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   }}
                   className={`${inputClass} font-medium`}
                 >
-                  {clinicLocations.map((clinic) => (
+                  {publicClinicLocations.map((clinic) => (
                     <option key={clinic.id} value={clinic.name}>
                       {clinic.shortName} ({clinic.postcode}) - {getClinicAvailabilitySummary(clinic).join('; ')}
                     </option>
@@ -433,17 +431,9 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                 </p>
               </div>
 
-              {(verifiedPhone || verifiedEmail || verifiedTurnaround) && (
+              {verifiedPhone && (
                 <div className="text-body-small bg-slate-50 p-4 rounded-xl border border-slate-200 max-w-md mx-auto text-left space-y-1.5 text-slate-700">
-                  {verifiedPhone && (
-                    <p><strong>{verifiedPhone.label}:</strong> {verifiedPhone.display}</p>
-                  )}
-                  {verifiedEmail && (
-                    <p><strong>Email:</strong> {verifiedEmail.display}</p>
-                  )}
-                  {verifiedTurnaround && (
-                    <p><strong>Turnaround:</strong> {verifiedTurnaround}</p>
-                  )}
+                  <p><strong>{verifiedPhone.label}:</strong> {verifiedPhone.display}</p>
                 </div>
               )}
 

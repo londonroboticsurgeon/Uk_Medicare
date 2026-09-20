@@ -59,7 +59,9 @@ export interface TreatmentBreadcrumb {
   path: string;
 }
 
-const legacyBase = 'https://www.keyholesurgeon.co.uk';
+// Historical source paths are retained for editorial traceability without
+// shipping the retired domain as a public production signal.
+const legacyBase = '';
 
 export const treatmentCategories: TreatmentCategory[] = [
   {
