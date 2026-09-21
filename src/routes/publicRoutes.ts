@@ -75,6 +75,7 @@ export const publicRoutes: PublicRoute[] = [
     h1: 'Robotic-Assisted Surgery',
     indexable: true,
     includeInSitemap: true,
+    lastModified: '2026-09-21',
   },
   {
     path: '/robotic-surgery/compare',
@@ -95,6 +96,7 @@ export const publicRoutes: PublicRoute[] = [
     h1: 'About Prof. Hemant Sheth',
     indexable: true,
     includeInSitemap: true,
+    lastModified: '2026-09-21',
   },
   {
     path: '/locations',

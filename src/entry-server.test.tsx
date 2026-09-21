@@ -7,7 +7,21 @@ describe('server rendering', () => {
 
     expect(html).toContain('<h1');
     expect(html).toContain('About Prof. Hemant Sheth');
+    expect(html).toContain('Independent professional evidence');
+    expect(html).toContain('London North West University Healthcare NHS Trust');
+    expect(html).toContain('Royal College of Surgeons of England');
     expect(html).not.toContain('keyholesurgeon.co.uk');
+  });
+
+  it('renders direct robotic-surgery answers and primary sources for crawlers', () => {
+    const html = renderPage('/robotic-surgery');
+
+    expect(html).toContain('Robotic surgery questions, answered');
+    expect(html).toContain('Does the robot perform the operation by itself?');
+    expect(html).toContain('Is robotic surgery always better than laparoscopic or open surgery?');
+    expect(html).toContain('Evidence from the Ealing Hospital programme');
+    expect(html).toContain('https://www.lnwh.nhs.uk/news/surgeon-embraces-robotic-surgery-12793');
+    expect(html).not.toContain('record-breaking surgeon');
   });
 
   it('renders a verified location as crawlable HTML', () => {

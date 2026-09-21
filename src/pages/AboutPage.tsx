@@ -4,6 +4,7 @@ import { aboutPositioning, profileDetail } from '../data/about';
 import { getVerified, professionalIdentity } from '../data/professionalIdentity';
 import { publications } from '../data/publications';
 import { isSafeToRender } from '../data/contentStatus';
+import { ProfessionalEvidenceSection } from '../components/ProfessionalEvidenceSection';
 
 interface AboutPageProps {
   onOpenBooking: () => void;
@@ -88,6 +89,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking }) => {
             ))}
           </ul>
         </section>
+
+        <ProfessionalEvidenceSection />
 
         {verifiedPublications.length > 0 && (
           <section aria-labelledby="research-heading">

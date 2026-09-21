@@ -8,6 +8,11 @@ import {
 import { getPublicClinicById } from '../data/clinics';
 import { professionalIdentity, getVerified } from '../data/professionalIdentity';
 import {
+  professionalProfileEvidence,
+  roboticAnswerQuestions,
+  roboticInstitutionalEvidence,
+} from '../data/authorityEvidence';
+import {
   getTreatmentBreadcrumbs,
   getTreatmentCategoryById,
   getTreatmentPageByPath,
@@ -16,13 +21,44 @@ import { PublicRoute } from '../routes/publicRoutes';
 
 type SchemaNode = Record<string, unknown>;
 
-const surgeonNode = (): SchemaNode => ({
-  '@type': ['Person', 'Physician'],
-  '@id': SURGEON_ENTITY_ID,
-  name: getVerified(professionalIdentity.displayName) ?? 'Prof. Hemant Sheth',
-  jobTitle: getVerified(professionalIdentity.workingTitle),
-  url: canonicalUrlForPath('/about-prof-hemant-sheth'),
-});
+const surgeonNode = (): SchemaNode => {
+  const memberships = getVerified(professionalIdentity.memberships) ?? [];
+  const languages = getVerified(professionalIdentity.languages) ?? [];
+
+  return {
+    '@type': ['Person', 'Physician'],
+    '@id': SURGEON_ENTITY_ID,
+    name: getVerified(professionalIdentity.displayName) ?? 'Prof. Hemant Sheth',
+    jobTitle: getVerified(professionalIdentity.workingTitle),
+    url: canonicalUrlForPath('/about-prof-hemant-sheth'),
+    affiliation: {
+      '@type': 'Organization',
+      name: 'London North West University Healthcare NHS Trust',
+      url: 'https://www.lnwh.nhs.uk/',
+    },
+    memberOf: memberships.map((name) => ({
+      '@type': 'Organization',
+      name,
+    })),
+    knowsLanguage: languages,
+    knowsAbout: [
+      'Upper gastrointestinal surgery',
+      'Hepatobiliary surgery',
+      'Laparoscopic surgery',
+      'Robotic-assisted surgery',
+    ],
+    subjectOf: professionalProfileEvidence.map((evidence) => ({
+      '@type': evidence.schemaType,
+      name: evidence.sourceTitle,
+      url: evidence.url,
+      publisher: {
+        '@type': 'Organization',
+        name: evidence.sourceName,
+      },
+      ...(evidence.publishedDate ? { datePublished: evidence.publishedDate } : {}),
+    })),
+  };
+};
 
 const websiteNode = (): SchemaNode => ({
   '@type': 'WebSite',
@@ -76,20 +112,45 @@ export const buildStructuredData = (route: PublicRoute) => {
     description: route.description,
     isPartOf: { '@id': WEBSITE_ENTITY_ID },
     about: { '@id': SURGEON_ENTITY_ID },
+    ...(route.lastModified ? { dateModified: route.lastModified } : {}),
   };
+  if (route.kind === 'about') {
+    page.mainEntity = { '@id': SURGEON_ENTITY_ID };
+    page.citation = professionalProfileEvidence.map((evidence) => evidence.url);
+  }
   if (breadcrumb) page.breadcrumb = { '@id': `${canonicalUrl}#breadcrumb` };
   graph.push(page);
 
   const treatment = getTreatmentPageByPath(route.path);
   if (treatment) {
     const category = getTreatmentCategoryById(treatment.categoryId);
+    const procedureId = `${canonicalUrl}#procedure`;
     graph.push({
       '@type': 'MedicalProcedure',
-      '@id': `${canonicalUrl}#procedure`,
+      '@id': procedureId,
       name: treatment.title,
       description: treatment.answerFirst,
       bodyLocation: category?.title,
       url: canonicalUrl,
+    });
+    page.mainEntity = { '@id': procedureId };
+  }
+
+  if (route.path === '/robotic-surgery') {
+    const faqId = `${canonicalUrl}#faq`;
+    page.citation = roboticInstitutionalEvidence.map((evidence) => evidence.url);
+    page.mainEntity = { '@id': faqId };
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': faqId,
+      mainEntity: roboticAnswerQuestions.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
     });
   }
 

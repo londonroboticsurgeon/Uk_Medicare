@@ -8,10 +8,24 @@
 
 ## Main pages
 
-- https://londonroboticsurgeon.co.uk/about-prof-hemant-sheth
-- https://londonroboticsurgeon.co.uk/treatments
-- https://londonroboticsurgeon.co.uk/robotic-surgery
-- https://londonroboticsurgeon.co.uk/locations
+- Professional profile and institutional evidence: https://londonroboticsurgeon.co.uk/about-prof-hemant-sheth
+- Treatment directory and patient guides: https://londonroboticsurgeon.co.uk/treatments
+- Robotic surgery explanations, direct answers and NHS evidence: https://londonroboticsurgeon.co.uk/robotic-surgery
+- Verified public consultation locations: https://londonroboticsurgeon.co.uk/locations
+
+## Primary institutional evidence
+
+- London North West University Healthcare NHS Trust, 29 May 2026: https://www.lnwh.nhs.uk/news/surgeon-embraces-robotic-surgery-12793
+- London North West University Healthcare NHS Trust, 8 June 2026: https://www.lnwh.nhs.uk/news/ealing-robot-wins-hearts-and-minds-12842
+- London North West University Healthcare NHS Trust, 28 July 2026: https://www.lnwh.nhs.uk/news/robot-celebrates-100th-procedure-13015
+- Royal College of Surgeons of England surgical tutor directory: https://www.rcseng.ac.uk/careers-in-surgery/outreach/contact-your-surgical-tutor/
+
+## Evidence boundaries
+
+- Dated procedure figures describe the early Ealing Hospital robotic programme and are not current personal totals.
+- The site does not claim that robotic surgery is automatically better than laparoscopic or open surgery.
+- Suitability for any surgical approach requires individual clinical assessment.
+- Only clinic locations approved for public display are included in the location directory.
 
 ## Patient information
 

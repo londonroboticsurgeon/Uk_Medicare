@@ -76,6 +76,34 @@ describe('structured data', () => {
     expect(json).not.toContain('keyholesurgeon.co.uk');
   });
 
+  it('connects the verified professional entity to institutional evidence without gated facts', () => {
+    const route = getPublicRoute('/about-prof-hemant-sheth');
+    expect(route).toBeDefined();
+
+    const json = JSON.stringify(buildStructuredData(route!));
+
+    expect(json).toContain('London North West University Healthcare NHS Trust');
+    expect(json).toContain('Royal College of Surgeons of England');
+    expect(json).toContain('https://www.lnwh.nhs.uk/news/surgeon-embraces-robotic-surgery-12793');
+    expect(json).toContain('https://www.rcseng.ac.uk/careers-in-surgery/outreach/contact-your-surgical-tutor/');
+    expect(json).not.toContain('4567912');
+    expect(json).not.toContain('34 years');
+  });
+
+  it('publishes visible robotic answers and their citations as FAQ structured data', () => {
+    const route = getPublicRoute('/robotic-surgery');
+    expect(route).toBeDefined();
+
+    const data = buildStructuredData(route!);
+    const json = JSON.stringify(data);
+
+    expect(json).toContain('FAQPage');
+    expect(json).toContain('Does the robot perform the operation by itself?');
+    expect(json).toContain('The robotic system does not operate independently');
+    expect(json).toContain('https://www.lnwh.nhs.uk/news/ealing-robot-wins-hearts-and-minds-12842');
+    expect(json).toContain('2026-09-21');
+  });
+
   it('does not emit structured data for a noindex form', () => {
     const route = getPublicRoute('/submit-testimonial');
     expect(route).toBeDefined();

@@ -8,6 +8,7 @@ import { TreatmentDetailsPage } from './components/TreatmentDetailsPage';
 import { RoboticSurgerySection } from './components/RoboticSurgerySection';
 import { RoboticSurgeryExplainerSection } from './components/RoboticSurgeryExplainerSection';
 import { RoboticComparisonSection } from './components/RoboticComparisonSection';
+import { RoboticAuthoritySection } from './components/RoboticAuthoritySection';
 import { ClinicLocations } from './components/ClinicLocations';
 import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
@@ -218,6 +219,7 @@ export function App({ initialPath }: AppProps) {
             onOpenBooking={() => handleOpenBooking('Robotic Surgery')}
             onCompareApproaches={navigateToPage(ROBOTIC_COMPARISON_PATH)}
           />
+          <RoboticAuthoritySection />
           <RoboticComparisonSection onOpenBooking={() => handleOpenBooking('Robotic Surgery')} />
         </>
       );
