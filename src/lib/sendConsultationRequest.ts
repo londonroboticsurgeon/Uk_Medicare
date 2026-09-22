@@ -40,7 +40,7 @@ function buildMessageBody(payload: ConsultationRequestPayload): string {
       : 'Self-funding (direct pay)';
 
   const lines = [
-    'New consultation request from londonroboticsurgeon.co.uk',
+    'New consultation request from keyholesurgeon.co.uk',
     '',
     `Funding: ${funding}`,
     `Hospital: ${payload.selectedHospital}`,
@@ -84,7 +84,6 @@ export async function sendConsultationRequest(payload: ConsultationRequestPayloa
     preferred_timing: payload.preferredDays,
     insurer_name: payload.patientType === 'insured' ? payload.insurerName : 'N/A',
     auth_code: payload.patientType === 'insured' ? payload.authCode || '—' : 'N/A',
-    message: buildMessageBody(payload),
   };
 
   await emailjs.send(config.serviceId, config.templateId, templateParams, {
