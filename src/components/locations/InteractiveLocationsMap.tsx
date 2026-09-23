@@ -608,31 +608,31 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
             />
 
             <div className="pointer-events-none absolute left-3 right-3 top-3 z-30 flex flex-col gap-2 sm:left-5 sm:right-5 sm:top-5 md:flex-row md:items-start md:justify-between md:gap-3">
-              <div className="pointer-events-auto grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
+              <div className="pointer-events-auto grid min-w-0 grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
                 <button
                   type="button"
                   onClick={viewAllLocations}
-                  className={`text-button inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-4 py-2.5 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.14)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:px-5 sm:py-3 ${
+                  className={`text-button inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-2.5 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.14)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
                     mapMode === 'region' || mapMode === 'selected'
                       ? 'border-[#1b304d] bg-[#1b304d] text-white'
                       : 'border-white/80 bg-white/[0.92] text-[#294363] hover:bg-white'
                   }`}
                 >
-                  <LocateFixed className="h-4 w-4" />
-                  <span>View all locations</span>
+                  <LocateFixed className="h-4 w-4 shrink-0" />
+                  <span className="min-w-0 text-center leading-tight">View all locations</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={viewUkOverview}
-                  className={`text-button inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-4 py-2.5 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:px-5 sm:py-3 ${
+                  className={`text-button inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-2.5 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
                     mapMode === 'uk'
                       ? 'border-[#1b304d] bg-[#1b304d] text-white'
                       : 'border-white/80 bg-white/[0.92] text-[#294363] hover:bg-white'
                   }`}
                 >
-                  <Globe2 className="h-4 w-4" />
-                  <span>UK overview</span>
+                  <Globe2 className="h-4 w-4 shrink-0" />
+                  <span className="min-w-0 text-center leading-tight">UK overview</span>
                 </button>
               </div>
             </div>
