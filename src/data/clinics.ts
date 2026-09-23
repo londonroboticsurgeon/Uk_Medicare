@@ -7,7 +7,7 @@
  * directions, and consultation times from this file instead of
  * duplicating timetable copy locally.
  */
-import { VerificationStatus } from './contentStatus';
+import { isSafeToRender, VerificationStatus } from './contentStatus';
 
 export type ClinicAvailabilityFilter =
   | 'all'
@@ -281,6 +281,14 @@ export const clinicLocations: ClinicLocation[] = [
     ],
   },
 ];
+
+/** Public surfaces must use this filtered list, never the unreviewed source list. */
+export const publicClinicLocations = clinicLocations.filter((clinic) =>
+  isSafeToRender(clinic.publicationStatus)
+);
+
+export const getPublicClinicById = (clinicId: string) =>
+  publicClinicLocations.find((clinic) => clinic.id === clinicId) ?? null;
 
 export const nhsBase = {
   trust: 'London North West University Healthcare NHS Trust',

@@ -27,9 +27,8 @@ import { VerificationStatus, isSafeToRender } from './contentStatus';
  * anywhere. This was leaking into ConsultationModal's hardcoded
  * success-screen text; that leak is fixed by sourcing from this file.
  *
- * email: "info@keyholesurgeon.co.uk" — inferred from the practice's own
- * domain, never independently confirmed as a live, monitored inbox.
- * Stays 'pending' until confirmed.
+ * email: no replacement address has been confirmed for the current website.
+ * The retired-domain address is deliberately not shipped to browsers.
  *
  * enquiryTurnaround: no operational commitment has been confirmed by the
  * practice for any specific response time. Stays 'pending' — do not
@@ -49,19 +48,19 @@ export const contactInfo = {
   } satisfies ContactFact<{ display: string; href: string; label: string }>,
 
   secretaryMobile: {
-    value: { display: '07716 835261', href: 'tel:+447716835261' },
+    value: null,
     status: 'pending',
-  } satisfies ContactFact<{ display: string; href: string }>,
+  } satisfies ContactFact<null>,
 
   email: {
-    value: { display: 'info@keyholesurgeon.co.uk', href: 'mailto:info@keyholesurgeon.co.uk' },
+    value: null,
     status: 'pending',
-  } satisfies ContactFact<{ display: string; href: string }>,
+  } satisfies ContactFact<null>,
 
   enquiryTurnaround: {
-    value: 'Within 24 business hours.',
+    value: null,
     status: 'pending',
-  } satisfies ContactFact<string>,
+  } satisfies ContactFact<null>,
 } as const;
 
 export function getVerifiedContact<T>(fact: ContactFact<T>): T | undefined {

@@ -25,16 +25,16 @@ const getRoboticVideoEmbedUrl = () => {
 
 const roboticBenefits = [
   {
-    title: 'Enhanced precision',
-    description: 'Greater accuracy for complex procedures',
+    title: 'Magnified visualisation',
+    description: 'A three-dimensional view may support selected operations',
   },
   {
-    title: 'Minimally invasive approach',
-    description: 'Smaller incisions, less pain and faster recovery',
+    title: 'Surgeon-controlled instruments',
+    description: 'Wristed instruments follow the surgeon’s movements',
   },
   {
-    title: 'Advanced visualisation',
-    description: 'High-definition 3D imaging for superior surgical control',
+    title: 'Individual suitability',
+    description: 'Diagnosis, anatomy and hospital pathway guide the approach',
   },
 ];
 
@@ -102,13 +102,13 @@ export const RoboticSurgerySection: React.FC<RoboticSurgerySectionProps> = ({
               className="text-section-title text-white"
               style={{ fontFamily: '"Source Serif 4", Georgia, serif' }}
             >
-              Advanced robotic surgery <br />
-              with precision at its core
+              Robotic-assisted surgery, <br />
+              clearly explained
             </h2>
 
             {/* Body Copy */}
             <p className="text-lead max-w-[560px] text-sky-100">
-              Robotic-assisted surgery offers exceptional precision, enhanced visualisation and a minimally invasive approach for selected upper GI, gallbladder and hernia procedures.
+              Robotic-assisted surgery is a form of minimally invasive surgery. The surgeon controls the system throughout; suitability depends on the individual operation and clinical assessment.
             </p>
 
             {/* 3 Benefit Blocks: Side-by-side on desktop & tablet */}
@@ -189,7 +189,7 @@ export const RoboticSurgerySection: React.FC<RoboticSurgerySectionProps> = ({
                     {/* Video Title Overlay (Bottom Left) */}
                     <div className="absolute bottom-11 left-4 right-4 pointer-events-none">
                       <p className="font-sans font-semibold text-white text-base sm:text-[17px] leading-snug drop-shadow-md">
-                        Robotic Surgery at a Higher Standard
+                        Robotic surgery programme at Ealing Hospital
                       </p>
                       <p className="text-caption text-sky-100 drop-shadow">
                         Prof. Hemant Sheth
@@ -268,14 +268,14 @@ export const RoboticSurgerySection: React.FC<RoboticSurgerySectionProps> = ({
               </a>
             </div>
 
-            {/* Bottom Accent line: PATIENT-FOCUSED. TECHNOLOGY-DRIVEN. BETTER OUTCOMES. */}
+            {/* Bottom Accent line */}
             <div className="mt-8 border-t border-white/10 pt-4">
               <div
                 className="text-eyebrow flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sky-200"
               >
                 <span>PATIENT-FOCUSED.</span>
-                <span>TECHNOLOGY-<span className="text-[#38bdf8]">DRIVEN</span>.</span>
-                <span>BETTER OUTCOMES.</span>
+                <span>SURGEON-<span className="text-[#38bdf8]">CONTROLLED</span>.</span>
+                <span>INDIVIDUALLY ASSESSED.</span>
               </div>
               <div className="w-12 h-[2px] bg-[#38bdf8] mt-2 rounded-full shadow-[0_0_8px_rgba(56,189,248,0.7)]" />
             </div>

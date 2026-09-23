@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, CheckCircle2, ArrowRight } from 'lucide-react';
 import {
-  clinicLocations,
+  publicClinicLocations,
   formatClinicAvailability,
   getClinicAvailabilitySummary,
 } from '../data/clinics';
 import { contactInfo, getVerifiedContact } from '../data/contactInfo';
+import { sendConsultationRequest } from '../lib/sendConsultationRequest';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -24,7 +25,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   preselectedClinicId,
 }) => {
   const [patientType, setPatientType] = useState<'insured' | 'selfpay'>('insured');
-  const [selectedHospital, setSelectedHospital] = useState<string>(clinicLocations[0].name);
+  const [selectedHospital, setSelectedHospital] = useState<string>(publicClinicLocations[0].name);
   const [procedure, setProcedure] = useState<string>(preselectedProcedure || 'Robotic Surgery Assessment');
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
@@ -32,28 +33,29 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const [preferredDays, setPreferredDays] = useState('Any listed clinic time');
   const [insurerName, setInsurerName] = useState('Bupa');
   const [authCode, setAuthCode] = useState('');
-  const [notes, setNotes] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const dialogRef = useRef<HTMLDivElement>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
   const previouslyFocusedElement = useRef<HTMLElement | null>(null);
 
   const verifiedPhone = getVerifiedContact(contactInfo.generalPhone);
-  const verifiedEmail = getVerifiedContact(contactInfo.email);
-  const verifiedTurnaround = getVerifiedContact(contactInfo.enquiryTurnaround);
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const matchingClinic = clinicLocations.find((clinic) => clinic.id === preselectedClinicId);
-    setSelectedHospital(matchingClinic?.name ?? clinicLocations[0].name);
+    const matchingClinic = publicClinicLocations.find((clinic) => clinic.id === preselectedClinicId);
+    setSelectedHospital(matchingClinic?.name ?? publicClinicLocations[0].name);
     setPreferredDays('Any listed clinic time');
     setProcedure(preselectedProcedure || 'Robotic Surgery Assessment');
   }, [isOpen, preselectedClinicId, preselectedProcedure]);
 
   const closeModal = () => {
     setIsSubmitted(false);
+    setIsSubmitting(false);
+    setSubmitError(null);
     onClose();
   };
 
@@ -117,9 +119,34 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      await sendConsultationRequest({
+        patientType,
+        selectedHospital,
+        procedure,
+        fullName,
+        phone,
+        email,
+        preferredDays,
+        insurerName,
+        authCode,
+      });
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('Consultation request email failed', err);
+      const message =
+        err instanceof Error
+          ? err.message
+          : 'Unable to send your request. Please try again or call the clinic.';
+      setSubmitError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const sectionLabelClass = 'text-form-label block font-bold text-slate-700 uppercase tracking-[0.08em] mb-2';
@@ -127,7 +154,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const inputClass = 'w-full text-base leading-6 p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#294363]';
   const compactInputClass = 'w-full text-base leading-6 p-3 rounded-lg border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#294363]';
   const selectedClinic =
-    clinicLocations.find((clinic) => clinic.name === selectedHospital) ?? clinicLocations[0];
+    publicClinicLocations.find((clinic) => clinic.name === selectedHospital) ?? publicClinicLocations[0];
 
   return (
     <div
@@ -222,7 +249,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   }}
                   className={`${inputClass} font-medium`}
                 >
-                  {clinicLocations.map((clinic) => (
+                  {publicClinicLocations.map((clinic) => (
                     <option key={clinic.id} value={clinic.name}>
                       {clinic.shortName} ({clinic.postcode}) - {getClinicAvailabilitySummary(clinic).join('; ')}
                     </option>
@@ -355,12 +382,21 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
               {/* Submit CTA */}
               <div className="pt-2">
+                {submitError && (
+                  <p
+                    role="alert"
+                    className="text-form-help text-red-700 bg-red-50 border border-red-200 rounded-xl p-3 mb-3 text-left"
+                  >
+                    {submitError}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="text-button w-full bg-[#294363] hover:bg-[#1e3450] text-white font-bold py-3.5 rounded-xl shadow transition flex items-center justify-center space-x-2 uppercase tracking-[0.08em]"
+                  disabled={isSubmitting}
+                  className="text-button w-full bg-[#294363] hover:bg-[#1e3450] disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-xl shadow transition flex items-center justify-center space-x-2 uppercase tracking-[0.08em]"
                 >
-                  <span>Submit Consultation Request</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>{isSubmitting ? 'Sending…' : 'Submit Consultation Request'}</span>
+                  {!isSubmitting && <ArrowRight className="w-4 h-4" />}
                 </button>
                 <p className="text-form-help text-slate-500 text-center mt-2">
                   This submits an enquiry only — it does not confirm an appointment. Our private secretary will contact you to arrange a time.
@@ -395,17 +431,9 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                 </p>
               </div>
 
-              {(verifiedPhone || verifiedEmail || verifiedTurnaround) && (
+              {verifiedPhone && (
                 <div className="text-body-small bg-slate-50 p-4 rounded-xl border border-slate-200 max-w-md mx-auto text-left space-y-1.5 text-slate-700">
-                  {verifiedPhone && (
-                    <p><strong>{verifiedPhone.label}:</strong> {verifiedPhone.display}</p>
-                  )}
-                  {verifiedEmail && (
-                    <p><strong>Email:</strong> {verifiedEmail.display}</p>
-                  )}
-                  {verifiedTurnaround && (
-                    <p><strong>Turnaround:</strong> {verifiedTurnaround}</p>
-                  )}
+                  <p><strong>{verifiedPhone.label}:</strong> {verifiedPhone.display}</p>
                 </div>
               )}
 

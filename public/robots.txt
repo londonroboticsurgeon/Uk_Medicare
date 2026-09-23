@@ -1,24 +1,37 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://www.keyholesurgeon.co.uk/sitemap.xml
-
-# Explicit Bot Directives for Search & AI Answer Engines (AEO)
 User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /
+
 User-agent: Applebot
 Allow: /
+
+Sitemap: https://londonroboticsurgeon.co.uk/sitemap.xml

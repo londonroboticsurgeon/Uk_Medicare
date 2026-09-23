@@ -2,7 +2,7 @@ import React from 'react';
 import { Phone, ChevronRight, AlertTriangle } from 'lucide-react';
 import { professionalIdentity, getVerified } from '../data/professionalIdentity';
 import { contactInfo, getVerifiedContact } from '../data/contactInfo';
-import { clinicLocations, getClinicAvailabilitySummary } from '../data/clinics';
+import { publicClinicLocations, getClinicAvailabilitySummary } from '../data/clinics';
 
 interface FooterProps {
   onOpenBooking: () => void;
@@ -29,11 +29,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onViewProfile }) 
   const verifiedPhone = getVerifiedContact(contactInfo.generalPhone);
 
   const navLinks: Array<{ label: string; href?: string; onClick?: () => void }> = [
-    { label: 'About Prof. Sheth', onClick: onViewProfile },
-    { label: 'Robotic Surgery', href: '#robotic' },
+    { label: 'About Prof. Sheth', href: '/about-prof-hemant-sheth' },
+    { label: 'Robotic Surgery', href: '/robotic-surgery' },
     { label: 'Treatments & Specialties', href: '/treatments' },
-    { label: 'Locations', href: '#clinics' },
-    { label: 'Patient Info', href: '#patient-info' },
+    { label: 'Locations', href: '/locations' },
   ];
 
   return (
@@ -100,12 +99,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onViewProfile }) 
               Practice Locations
             </h4>
             <ul className="space-y-2 text-body-small text-slate-300">
-              {clinicLocations.map((clinic) => {
+              {publicClinicLocations.map((clinic) => {
                 const availability = getClinicAvailabilitySummary(clinic);
 
                 return (
                   <li key={clinic.id}>
-                    <a href="#clinics" className="block rounded-lg border border-white/5 bg-white/[0.03] px-3 py-2 transition hover:border-teal-400/40 hover:bg-white/[0.06]">
+                    <a href={`/locations/${clinic.id}`} className="block rounded-lg border border-white/5 bg-white/[0.03] px-3 py-2 transition hover:border-teal-400/40 hover:bg-white/[0.06]">
                       <span className="block font-bold text-white">{clinic.shortName}</span>
                       <span className="mt-0.5 block text-caption text-slate-400">
                         {availability.join('; ')}

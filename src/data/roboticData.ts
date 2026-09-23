@@ -12,92 +12,80 @@ export interface ProcedureComparison {
 }
 
 export const roboticOverview = {
-  headline: "Pioneering Da Vinci Xi Robotic Surgery in London & Hertfordshire",
-  subheadline: "Unmatched Precision, Faster Recovery, and Superior Clinical Outcomes",
-  nationalRecordBadge: "National Record-Breaking Milestone at Ealing Hospital (NHS Trust)",
-  nationalRecordDescription: "Prof. Hemant Sheth and his surgical team at London North West University Healthcare NHS Trust (Ealing Hospital) achieved a historic regional and national milestone by rapidly accelerating the adoption of Da Vinci robotic surgery, reducing surgical waiting times and establishing pioneering day-case robotic recovery protocols.",
-  videoUrl: "https://www.youtube.com/watch?v=Q__rvX_EEGQ",
-  videoEmbedId: "Q__rvX_EEGQ",
+  headline: 'Robotic-assisted surgery in London',
+  subheadline: 'General information about surgeon-controlled minimally invasive surgery',
+  nationalRecordBadge: 'Robotic surgery programme at Ealing Hospital',
+  nationalRecordDescription:
+    'This video introduces the robotic surgery programme at Ealing Hospital. It does not determine whether robotic surgery is suitable for an individual patient.',
+  videoUrl: 'https://www.youtube.com/watch?v=Q__rvX_EEGQ',
+  videoEmbedId: 'Q__rvX_EEGQ',
   features: [
     {
-      title: "10x Magnification 3D-HD Vision",
-      description: "True stereoscopic three-dimensional view allows the surgeon to visualize tiny nerves, blood vessels, and tissue planes with unmatched microscopic clarity.",
-      benefit: "Significantly lowers risk of nerve injury and inadvertent tissue trauma."
+      title: 'Magnified three-dimensional view',
+      description:
+        'The surgeon views the operative field through a console during the procedure.',
+      benefit: 'The visual system can assist the surgeon during selected operations.',
     },
     {
-      title: "EndoWrist® Micro-Dexterity",
-      description: "Instruments articulate with 7 degrees of freedom, rotating and bending well beyond the physiological limits of the human wrist inside narrow anatomical spaces.",
-      benefit: "Enables ultra-precise suturing and dissection in complex abdominal wall and hiatus regions."
+      title: 'Wristed instruments',
+      description:
+        'The instruments translate the surgeon’s hand movements inside the body.',
+      benefit: 'The approach may be useful where access and instrument movement are important.',
     },
     {
-      title: "Tremor Filtration & Motion Scaling",
-      description: "Software algorithms translate the surgeon's natural hand movements into flawless, tremor-free micro-motions at sub-millimeter scale.",
-      benefit: "Eliminates fatigue tremor, ensuring rock-steady tissue handling throughout delicate operations."
+      title: 'Surgeon-controlled system',
+      description:
+        'The robotic system does not operate independently; the surgeon controls each movement.',
+      benefit: 'The surgical team remains responsible for the operation throughout.',
     },
-    {
-      title: "Ergonomic Surgeon Console",
-      description: "The surgeon operates comfortably seated at an immersive high-tech console with dual hand controllers and foot pedals, maintaining peak focus.",
-      benefit: "Allows prolonged complex reconstructions without surgeon muscular fatigue."
-    }
-  ],
+  ] satisfies RoboticFeature[],
   comparisons: [
     {
-      feature: "Surgical Incision Size",
-      open: "Large open incision (10cm - 25cm)",
-      laparoscopic: "3 to 4 small keyholes (5mm - 12mm)",
-      robotic: "3 to 4 ultra-precise mini-ports (8mm)"
+      feature: 'Access',
+      open: 'Usually uses a larger incision to reach the operative area.',
+      laparoscopic: 'Usually uses several small ports for a camera and instruments.',
+      robotic: 'Usually uses several small ports for a camera and robotic instruments.',
     },
     {
-      feature: "Visualisation",
-      open: "Direct eye view with surgical headlights",
-      laparoscopic: "2D monitor screen, flat depth perception",
-      robotic: "Immersive 3D High-Definition stereoscopic view (10x zoom)"
+      feature: 'View',
+      open: 'The surgeon views the operative area directly.',
+      laparoscopic: 'A camera displays the operative field on a monitor.',
+      robotic: 'A console provides a magnified three-dimensional camera view.',
     },
     {
-      feature: "Instrument Maneuverability",
-      open: "Direct human hand access with rigid instruments",
-      laparoscopic: "Rigid straight shafts with limited angles of motion",
-      robotic: "EndoWrist technology with 7 degrees of freedom (rotates 360°)"
+      feature: 'Instruments',
+      open: 'The surgeon works directly with conventional surgical instruments.',
+      laparoscopic: 'The surgeon controls long instruments through the ports.',
+      robotic: 'The surgeon controls wristed instruments from the console.',
     },
     {
-      feature: "Post-Operative Pain",
-      open: "Significant pain requiring strong oral/IV opioids",
-      laparoscopic: "Mild to moderate pain, short painkiller course",
-      robotic: "Significantly reduced pain due to zero abdominal wall torque"
+      feature: 'Who performs the operation',
+      open: 'The surgeon and theatre team perform the operation.',
+      laparoscopic: 'The surgeon and theatre team perform the operation.',
+      robotic: 'The surgeon controls the system and performs the operation with the theatre team.',
     },
     {
-      feature: "Hospital Stay Duration",
-      open: "3 to 7+ days in hospital",
-      laparoscopic: "Day case or 1 night stay",
-      robotic: "Day case or overnight stay (rapid return to home)"
+      feature: 'Suitability',
+      open: 'Depends on the condition, anatomy, previous surgery and clinical assessment.',
+      laparoscopic: 'Depends on the condition, anatomy, previous surgery and clinical assessment.',
+      robotic: 'Depends on the condition, anatomy, previous surgery, hospital pathway and clinical assessment.',
     },
-    {
-      feature: "Return to Normal Routine",
-      open: "6 to 8 weeks recovery",
-      laparoscopic: "2 to 3 weeks recovery",
-      robotic: "1 to 2 weeks for most daily activities and light work"
-    }
-  ],
+  ] satisfies ProcedureComparison[],
   roboticProcedures: [
     {
-      name: "Robotic Inguinal & Femoral Hernia Repair",
-      indication: "Primary and recurrent groin hernias",
-      advantage: "Allows anatomical mesh placement with zero nerve-pinching tacks, substantially reducing risk of chronic groin neuralgia."
+      name: 'Robotic hernia surgery',
+      indication: 'May be considered for selected groin or abdominal wall hernias.',
+      advantage: 'The most appropriate approach is decided after individual clinical assessment.',
     },
     {
-      name: "Robotic Complex Incisional & Ventral Hernia (TAR/eTEP)",
-      indication: "Large abdominal wall defects and previous surgical scar hernias",
-      advantage: "Reconstructs rectus abdominal muscles retro-muscularly without large painful open incisions or wound complications."
+      name: 'Robotic anti-reflux and hiatus hernia surgery',
+      indication: 'May be considered for selected reflux or hiatus hernia procedures.',
+      advantage: 'The most appropriate approach is decided after individual clinical assessment.',
     },
     {
-      name: "Robotic Anti-Reflux & Hiatus Hernia Repair",
-      indication: "Severe GERD, large para-esophageal sliding or rolling hiatus hernias",
-      advantage: "Unmatched visualization around the esophagus, vagus nerves, and mediastinum ensures anatomically perfect fundoplication wraps."
+      name: 'Robotic gallbladder surgery',
+      indication: 'May be considered for selected gallbladder procedures.',
+      advantage: 'The most appropriate approach is decided after individual clinical assessment.',
     },
-    {
-      name: "Robotic Cholecystectomy (Gallbladder Removal)",
-      indication: "Symptomatic gallstones, acute and chronic cholecystitis, gallbladder polyps",
-      advantage: "Sub-millimeter dissection of Calot's triangle to protect the common bile duct and cystic artery in inflamed anatomy."
-    }
-  ]
+  ],
 };
