@@ -10,7 +10,7 @@ import {
 } from '../../data/clinics';
 import { LocationDetailStrip } from './LocationDetailStrip';
 import { LocationSelector } from './LocationSelector';
-import { StaticLocationMapPreview } from './StaticLocationMapPreview';
+import { GoogleMapsEmbedPreview } from './GoogleMapsEmbedPreview';
 import { loadGoogleMaps } from './googleMapsLoader';
 import {
   GOOGLE_MAP_OPTIONS,
@@ -592,11 +592,10 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
         <div className="mt-6">
           <div className="relative h-[560px] overflow-hidden rounded-[22px] border border-white/80 bg-[#c6e0eb] shadow-[0_24px_72px_rgba(53,91,122,0.28)] sm:h-[610px] lg:h-[620px]">
             {loadState !== 'ready' && (
-              <StaticLocationMapPreview
+              <GoogleMapsEmbedPreview
                 clinics={visibleClinics}
                 mapMode={mapMode}
                 selectedClinicId={selectedClinicId}
-                onSelect={handleSelectClinic}
               />
             )}
 
@@ -608,7 +607,11 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
               aria-label="Interactive Google Map showing Prof. Sheth consultation hospital locations"
             />
 
-            <div className="pointer-events-none absolute left-4 right-4 top-4 z-40 flex flex-col gap-3 sm:left-5 sm:right-5 sm:top-5 md:flex-row md:items-start md:justify-between md:gap-3">
+            <div
+              className={`pointer-events-none absolute left-4 right-4 z-40 flex flex-col gap-3 sm:left-5 sm:right-5 md:flex-row md:items-start md:justify-between md:gap-3 ${
+                loadState === 'ready' ? 'top-4 sm:top-5' : 'top-16 sm:top-20'
+              }`}
+            >
               <div className="pointer-events-auto grid min-w-0 grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
                 <button
                   type="button"
@@ -639,7 +642,13 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
             </div>
 
             {selectedClinic && mapMode !== 'uk' && (
-              <div className="pointer-events-none absolute right-4 top-28 z-30 w-[calc(100%-2rem)] max-w-[340px] sm:right-5 sm:w-[340px] md:top-24 lg:top-5">
+              <div
+                className={`pointer-events-none absolute right-4 z-30 w-[calc(100%-2rem)] max-w-[340px] sm:right-5 sm:w-[340px] ${
+                  loadState === 'ready'
+                    ? 'top-28 md:top-24 lg:top-5'
+                    : 'top-36 sm:top-40 md:top-36 lg:top-24'
+                }`}
+              >
                 <div className="rounded-xl border border-white/80 bg-white/[0.94] px-4 py-3 shadow-[0_14px_32px_rgba(15,23,42,0.18)] backdrop-blur">
                   <p className="text-caption font-extrabold uppercase text-red-500">
                     {selectedClinic.area.split(',')[0]}
