@@ -607,12 +607,12 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
               aria-label="Interactive Google Map showing Prof. Sheth consultation hospital locations"
             />
 
-            <div className="pointer-events-none absolute left-3 right-3 top-3 z-30 flex flex-col gap-2 sm:left-5 sm:right-5 sm:top-5 md:flex-row md:items-start md:justify-between md:gap-3">
+            <div className="pointer-events-none absolute left-4 right-4 top-4 z-40 flex flex-col gap-3 sm:left-5 sm:right-5 sm:top-5 md:flex-row md:items-start md:justify-between md:gap-3">
               <div className="pointer-events-auto grid min-w-0 grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
                 <button
                   type="button"
                   onClick={viewAllLocations}
-                  className={`text-button inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-2.5 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.14)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
+                  className={`text-button inline-flex min-h-12 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-3 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.14)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
                     mapMode === 'region' || mapMode === 'selected'
                       ? 'border-[#1b304d] bg-[#1b304d] text-white'
                       : 'border-white/80 bg-white/[0.92] text-[#294363] hover:bg-white'
@@ -625,7 +625,7 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
                 <button
                   type="button"
                   onClick={viewUkOverview}
-                  className={`text-button inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-2.5 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
+                  className={`text-button inline-flex min-h-12 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-3 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
                     mapMode === 'uk'
                       ? 'border-[#1b304d] bg-[#1b304d] text-white'
                       : 'border-white/80 bg-white/[0.92] text-[#294363] hover:bg-white'
@@ -638,7 +638,7 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
             </div>
 
             {selectedClinic && mapMode !== 'uk' && (
-              <div className="pointer-events-none absolute right-3 top-20 z-30 w-[calc(100%-1.5rem)] max-w-[340px] sm:right-5 sm:w-[340px] lg:top-5">
+              <div className="pointer-events-none absolute right-4 top-28 z-30 w-[calc(100%-2rem)] max-w-[340px] sm:right-5 sm:w-[340px] md:top-24 lg:top-5">
                 <div className="rounded-xl border border-white/80 bg-white/[0.94] px-4 py-3 shadow-[0_14px_32px_rgba(15,23,42,0.18)] backdrop-blur">
                   <p className="text-caption font-extrabold uppercase text-red-500">
                     {selectedClinic.area.split(',')[0]}

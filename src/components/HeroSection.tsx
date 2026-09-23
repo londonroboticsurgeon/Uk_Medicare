@@ -28,11 +28,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onViewP
     </picture>
 
     <div
-      className="absolute inset-0"
+      className="absolute inset-0 md:hidden"
       aria-hidden="true"
       style={{
         background:
           'linear-gradient(90deg, rgba(8,20,36,1) 0%, rgba(8,20,36,0.98) 44%, rgba(8,20,36,0.92) 70%, rgba(8,20,36,0.42) 88%, rgba(8,20,36,0.08) 100%)',
+      }}
+    />
+    <div
+      className="absolute inset-0 hidden md:block"
+      aria-hidden="true"
+      style={{
+        background:
+          'linear-gradient(90deg, rgba(8,20,36,1) 0%, rgba(8,20,36,0.98) 34%, rgba(8,20,36,0.78) 49%, rgba(8,20,36,0.34) 64%, rgba(8,20,36,0.08) 82%, rgba(8,20,36,0.02) 100%)',
       }}
     />
 
