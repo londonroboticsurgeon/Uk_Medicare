@@ -23,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onViewP
         height="768"
         {...highPriorityImageProps}
         decoding="async"
-        className="h-full w-full object-cover object-[52%_center] md:object-right"
+        className="h-full w-full object-cover object-[61%_center] md:object-right"
       />
     </picture>
 
