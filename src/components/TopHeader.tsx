@@ -13,7 +13,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onOpenBooking }) => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
         
         {/* Left: Official Surgeon Logo (Emblem Badge + Professional Credentials) */}
-        <a href="/" className="flex w-full min-w-0 items-center justify-center space-x-3.5 sm:space-x-4 group cursor-pointer md:w-auto md:justify-start">
+        <a href="/" className="flex w-full max-w-[330px] min-w-0 items-center justify-start space-x-3.5 sm:max-w-none sm:justify-center sm:space-x-4 group cursor-pointer md:w-auto md:justify-start">
           {/* Official Caduceus & Primum Non Nocere Emblem */}
           <img
             src="/sheth_caduceus_emblem.png"
@@ -26,13 +26,13 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onOpenBooking }) => {
 
           {/* Surgeon Titles & Specialization (Spacious, Crisp & Uncongested) */}
           <div className="flex min-w-0 flex-col justify-center">
-            <p className="text-xl sm:text-2xl md:text-[27px] font-serif font-bold text-slate-900 tracking-tight leading-tight group-hover:text-[#0284c7] transition-colors">
+            <p className="max-w-[215px] text-xl sm:max-w-none sm:text-2xl md:text-[27px] font-serif font-bold text-slate-900 tracking-tight leading-tight group-hover:text-[#0284c7] transition-colors">
               Prof. Hemant Sheth
             </p>
-            <p className="max-w-[260px] text-[12px] sm:max-w-none sm:text-[13px] font-extrabold tracking-[0.08em] text-[#0284c7] uppercase mt-0.5 leading-snug">
+            <p className="max-w-[215px] text-[12px] sm:max-w-none sm:text-[13px] font-extrabold tracking-[0.08em] text-[#0284c7] uppercase mt-0.5 leading-snug">
               UGI &amp; Hepatobiliary Laparoscopic &amp; Robotic Surgeon
             </p>
-            <p className="text-[12px] sm:text-[13px] text-slate-500 font-medium leading-snug">
+            <p className="max-w-[215px] text-[12px] sm:max-w-none sm:text-[13px] text-slate-500 font-medium leading-snug">
               Specialist in Upper GI &amp; HPB Surgery
             </p>
           </div>
