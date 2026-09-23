@@ -662,7 +662,7 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
               </div>
             )}
 
-            <div className="absolute bottom-3 left-3 right-3 z-30 md:bottom-4 md:left-4 md:right-auto">
+            <div className="absolute bottom-12 left-3 right-3 z-30 md:bottom-4 md:left-4 md:right-auto">
               <LocationSelector
                 clinics={visibleClinics}
                 selectedClinicId={selectedClinicId}
