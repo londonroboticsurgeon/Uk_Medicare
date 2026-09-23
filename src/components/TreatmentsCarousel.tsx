@@ -106,7 +106,9 @@ export const TreatmentsCarousel: React.FC<TreatmentsCarouselProps> = ({
   const handleScroll = (direction: 'left' | 'right') => {
     const el = scrollContainerRef.current;
     if (!el) return;
-    const cardStep = 336; // Card width (318px) + gap (18px)
+    const firstCard = el.querySelector('article');
+    const cardWidth = firstCard?.getBoundingClientRect().width ?? 290;
+    const cardStep = Math.round(cardWidth + 18);
     const scrollAmount = direction === 'left' ? -cardStep : cardStep;
     el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
@@ -244,7 +246,7 @@ export const TreatmentsCarousel: React.FC<TreatmentsCarouselProps> = ({
         {/* ========================================================
             4. HORIZONTAL CAROUSEL RAIL
             Desktop: ~3 complete cards + 60-75% of 4th card peeking (width: 318px, height: 420px)
-            Mobile: 1.1-1.2 cards so next card is visibly peeking (width: 290px)
+            Mobile: one clean viewport-width card per snap point to avoid clipped text.
             ======================================================== */}
         <div 
           ref={scrollContainerRef}
@@ -268,7 +270,7 @@ export const TreatmentsCarousel: React.FC<TreatmentsCarouselProps> = ({
               }}
               role="button"
               tabIndex={0}
-              className="snap-start flex-shrink-0 w-[290px] sm:w-[295px] md:w-[318px] bg-white rounded-[18px] border border-[#E3EDF3] shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:-translate-y-1 hover:border-sky-300 hover:shadow-[0_12px_28px_rgba(2,132,199,0.09)] transition-all duration-300 ease-out flex flex-col justify-between group cursor-pointer overflow-hidden"
+              className="snap-start flex-shrink-0 w-[calc(100vw-2rem)] sm:w-[295px] md:w-[318px] bg-white rounded-[18px] border border-[#E3EDF3] shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:-translate-y-1 hover:border-sky-300 hover:shadow-[0_12px_28px_rgba(2,132,199,0.09)] transition-all duration-300 ease-out flex flex-col justify-between group cursor-pointer overflow-hidden"
               style={{
                 scrollSnapAlign: 'start',
                 height: '448px',

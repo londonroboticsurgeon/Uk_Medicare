@@ -9,7 +9,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onOpenBooking }) => {
   const verifiedPhone = getVerifiedContact(contactInfo.generalPhone);
 
   return (
-    <header className="bg-white border-b border-slate-100 py-3.5 sm:py-4 px-4 sm:px-8 sticky top-0 z-50 shadow-[0_2px_15px_rgba(0,0,0,0.03)] backdrop-blur-md bg-white/98">
+    <header className="bg-white border-b border-slate-100 py-3.5 sm:py-4 px-4 sm:px-8 md:sticky md:top-0 z-50 shadow-[0_2px_15px_rgba(0,0,0,0.03)] backdrop-blur-md bg-white/98">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
         
         {/* Left: Official Surgeon Logo (Emblem Badge + Professional Credentials) */}

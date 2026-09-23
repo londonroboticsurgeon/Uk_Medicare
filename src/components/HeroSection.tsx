@@ -18,7 +18,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onViewP
           preserves the existing dark safe area for the copy.
           ======================================================== */}
       <div 
-        className="absolute inset-0 h-full w-full bg-[length:auto_100%] bg-no-repeat bg-[position:56%_center] md:bg-right"
+        className="absolute inset-0 h-full w-full bg-[length:auto_100%] bg-no-repeat bg-[position:46%_center] md:bg-right"
         style={{
           backgroundImage: `url('/hero_bg_davinci_sheth.png')`,
         }}
@@ -111,7 +111,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onViewP
           vertically centered within the visible left safe area.
           ======================================================== */}
       <div 
-        className="md:hidden absolute left-4 sm:left-6 top-[46%] -translate-y-1/2 z-10 w-[270px] sm:w-[310px] space-y-3"
+        className="md:hidden absolute left-4 sm:left-6 top-[46%] -translate-y-1/2 z-10 w-[calc(100%-2rem)] max-w-[310px] space-y-3"
       >
         <div>
           <p 
@@ -131,12 +131,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onViewP
           className="font-serif font-semibold text-white drop-shadow-sm"
           style={{
             fontFamily: '"Source Serif 4", Georgia, serif',
-            fontSize: 'clamp(2.55rem, 9.6vw, 3.05rem)',
-            lineHeight: '1',
-            letterSpacing: '-0.025em',
+            fontSize: 'clamp(2.2rem, 8.8vw, 2.72rem)',
+            lineHeight: '1.04',
+            letterSpacing: '-0.01em',
           }}
         >
-          Specialist Robotic &amp;<br />
+          Specialist<br />
+          Robotic &amp;<br />
           Laparoscopic<br />
           Upper GI<br />
           Surgeon
