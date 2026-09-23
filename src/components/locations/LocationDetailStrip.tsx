@@ -27,15 +27,16 @@ export const LocationDetailStrip: React.FC<LocationDetailStripProps> = ({
   onOpenBooking,
 }) => {
   const availability = clinic ? getClinicAvailability(clinic, activeFilter) : [];
+  const clinicImage = clinic ? clinicImageById[clinic.id] : undefined;
 
   return (
     <div className="rounded-[22px] border border-white/80 bg-white/[0.92] p-4 shadow-[0_20px_60px_rgba(53,91,122,0.18)] backdrop-blur sm:p-5">
       {clinic ? (
         <div className="grid gap-5 xl:grid-cols-[210px_minmax(230px,0.9fr)_minmax(300px,1.1fr)_auto] xl:items-center">
-        <div className="relative h-28 overflow-hidden rounded-2xl bg-[#dceaf3]">
-          {clinicImageById[clinic.id] ? (
+        <div className={`relative overflow-hidden rounded-2xl bg-[#dceaf3] ${clinicImage ? 'h-28' : 'h-20 sm:h-24 xl:h-28'}`}>
+          {clinicImage ? (
             <img
-              src={clinicImageById[clinic.id]}
+              src={clinicImage}
               alt=""
               className="h-full w-full object-cover"
               loading="lazy"
@@ -43,8 +44,7 @@ export const LocationDetailStrip: React.FC<LocationDetailStripProps> = ({
           ) : (
             <>
               <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fbfd_0%,#d4e7f2_55%,#b8dbea_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 h-[58px] bg-white/[0.48]" />
-              <div className="absolute inset-x-4 bottom-4 flex min-w-0 items-center gap-3">
+              <div className="absolute inset-3 flex min-w-0 items-center gap-3 rounded-xl bg-white/[0.42] px-3">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/90 text-red-500 shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
                   <Building2 className="h-6 w-6" />
                 </div>
