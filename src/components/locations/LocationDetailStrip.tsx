@@ -43,17 +43,19 @@ export const LocationDetailStrip: React.FC<LocationDetailStripProps> = ({
           ) : (
             <>
               <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fbfd_0%,#d4e7f2_55%,#b8dbea_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 h-11 bg-white/[0.42]" />
-              <div className="absolute left-5 top-5 flex h-[52px] w-[52px] items-center justify-center rounded-2xl bg-white/90 text-red-500 shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
-                <Building2 className="h-7 w-7" />
-              </div>
-              <div className="absolute bottom-4 left-5 right-5">
-                <p className="text-eyebrow text-[#5f7088]">
-                  Verified site
-                </p>
-                <p className="text-meta mt-1 truncate font-extrabold text-[#1b304d]">
-                  {clinic.shortName}
-                </p>
+              <div className="absolute inset-x-0 bottom-0 h-[58px] bg-white/[0.48]" />
+              <div className="absolute inset-x-4 bottom-4 flex min-w-0 items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/90 text-red-500 shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
+                  <Building2 className="h-6 w-6" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-eyebrow text-[#5f7088]">
+                    Verified site
+                  </p>
+                  <p className="text-meta mt-0.5 truncate font-extrabold text-[#1b304d]">
+                    {clinic.shortName}
+                  </p>
+                </div>
               </div>
             </>
           )}
