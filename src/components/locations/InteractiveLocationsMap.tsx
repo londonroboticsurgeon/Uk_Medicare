@@ -612,30 +612,30 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
                 loadState === 'ready' ? 'top-4 sm:top-5' : 'top-16 sm:top-20'
               }`}
             >
-              <div className="pointer-events-auto grid min-w-0 grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
+              <div className="pointer-events-auto grid min-w-0 grid-cols-2 gap-1.5 sm:flex sm:flex-wrap sm:gap-3">
                 <button
                   type="button"
                   onClick={viewAllLocations}
-                  className={`text-button inline-flex min-h-12 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-3 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.14)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
+                  className={`text-button inline-flex min-h-12 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-3 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.14)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 max-sm:min-h-9 max-sm:gap-1 max-sm:px-2.5 max-sm:py-1.5 max-sm:text-[12px] max-sm:shadow-none sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
                     mapMode === 'region' || mapMode === 'selected'
                       ? 'border-[#1b304d] bg-[#1b304d] text-white'
                       : 'border-white/80 bg-white/[0.92] text-[#294363] hover:bg-white'
                   }`}
                 >
-                  <LocateFixed className="h-4 w-4 shrink-0" />
+                  <LocateFixed className="h-4 w-4 shrink-0 max-sm:h-3.5 max-sm:w-3.5" />
                   <span className="min-w-0 text-center leading-tight">View all locations</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={viewUkOverview}
-                  className={`text-button inline-flex min-h-12 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-3 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
+                  className={`text-button inline-flex min-h-12 min-w-0 items-center justify-center gap-1.5 rounded-full border px-3 py-3 font-extrabold shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur transition focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 max-sm:min-h-9 max-sm:gap-1 max-sm:px-2.5 max-sm:py-1.5 max-sm:text-[12px] max-sm:shadow-none sm:min-h-12 sm:gap-2 sm:px-5 sm:py-3 ${
                     mapMode === 'uk'
                       ? 'border-[#1b304d] bg-[#1b304d] text-white'
                       : 'border-white/80 bg-white/[0.92] text-[#294363] hover:bg-white'
                   }`}
                 >
-                  <Globe2 className="h-4 w-4 shrink-0" />
+                  <Globe2 className="h-4 w-4 shrink-0 max-sm:h-3.5 max-sm:w-3.5" />
                   <span className="min-w-0 text-center leading-tight">UK overview</span>
                 </button>
               </div>
@@ -649,14 +649,14 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
                     : 'top-36 sm:top-40 md:top-36 lg:top-24'
                 }`}
               >
-                <div className="rounded-xl border border-white/80 bg-white/[0.94] px-4 py-3 shadow-[0_14px_32px_rgba(15,23,42,0.18)] backdrop-blur">
-                  <p className="text-caption font-extrabold uppercase text-red-500">
+                <div className="rounded-xl border border-white/80 bg-white/[0.94] px-4 py-3 shadow-[0_14px_32px_rgba(15,23,42,0.18)] backdrop-blur max-sm:px-3 max-sm:py-2">
+                  <p className="text-caption font-extrabold uppercase text-red-500 max-sm:text-[10px]">
                     {selectedClinic.area.split(',')[0]}
                   </p>
-                  <p className="mt-1 font-serif text-[18px] font-bold leading-tight text-[#172943]">
+                  <p className="mt-1 font-serif text-[18px] font-bold leading-tight text-[#172943] max-sm:mt-0.5 max-sm:text-[14px]">
                     {selectedClinic.name}
                   </p>
-                  <p className="text-form-help mt-1.5 text-[#5f7088]">
+                  <p className="text-form-help mt-1.5 text-[#5f7088] max-sm:mt-0.5 max-sm:text-[11px] max-sm:leading-snug">
                     {selectedClinic.address}, {selectedClinic.postcode}, UK
                   </p>
                 </div>

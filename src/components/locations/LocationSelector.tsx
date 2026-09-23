@@ -101,36 +101,36 @@ export const LocationSelector: React.FC<LocationSelectorProps> = ({
     <div
       className={
         isOverlay
-          ? 'pointer-events-auto relative w-full max-w-[640px] overflow-hidden rounded-2xl border border-white/75 bg-white/[0.92] p-1 shadow-[0_18px_46px_rgba(15,23,42,0.14)] backdrop-blur md:w-[640px] md:p-0'
+          ? 'pointer-events-auto relative w-full max-w-[640px] overflow-hidden rounded-2xl border border-white/75 bg-white/[0.92] p-1 shadow-[0_18px_46px_rgba(15,23,42,0.14)] backdrop-blur max-sm:rounded-xl max-sm:shadow-[0_10px_26px_rgba(15,23,42,0.14)] md:w-[640px] md:p-0'
           : 'pointer-events-auto'
       }
     >
       {isOverlay && (
-        <div className="absolute right-2 top-2 z-20 flex gap-1.5">
+        <div className="absolute right-2 top-2 z-20 flex gap-1.5 max-sm:right-1.5 max-sm:top-1.5 max-sm:gap-1">
           <button
             type="button"
             onClick={() => moveClinicStrip('previous')}
             disabled={!canScrollPrevious}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-[#1b304d] shadow-[0_10px_22px_rgba(15,23,42,0.16)] transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:pointer-events-none disabled:opacity-0"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-[#1b304d] shadow-[0_10px_22px_rgba(15,23,42,0.16)] transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:pointer-events-none disabled:opacity-0 max-sm:h-6 max-sm:w-6"
             aria-label="Previous clinic"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4 max-sm:h-3.5 max-sm:w-3.5" />
           </button>
 
           <button
             type="button"
             onClick={() => moveClinicStrip('next')}
             disabled={!canScrollNext}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-[#1b304d] shadow-[0_10px_22px_rgba(15,23,42,0.16)] transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:pointer-events-none disabled:opacity-0"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-[#1b304d] shadow-[0_10px_22px_rgba(15,23,42,0.16)] transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:pointer-events-none disabled:opacity-0 max-sm:h-6 max-sm:w-6"
             aria-label="Next clinic"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4 max-sm:h-3.5 max-sm:w-3.5" />
           </button>
         </div>
       )}
 
       {isOverlay && (
-        <p className="text-caption border-b border-slate-200 px-4 py-2.5 font-extrabold uppercase text-[#5f7088] sm:px-5">
+        <p className="text-caption border-b border-slate-200 px-4 py-2.5 font-extrabold uppercase text-[#5f7088] max-sm:px-3 max-sm:py-1.5 max-sm:text-[10px] sm:px-5">
           {clinics.length} Clinic Location{clinics.length === 1 ? '' : 's'}
         </p>
       )}
@@ -158,7 +158,7 @@ export const LocationSelector: React.FC<LocationSelectorProps> = ({
               onClick={() => onSelect(clinic)}
               aria-current={isSelected ? 'location' : undefined}
               aria-pressed={isSelected}
-              className={`group relative min-w-[176px] snap-start px-4 py-4 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-500 motion-reduce:transition-none sm:min-w-[205px] sm:px-5 sm:py-5 ${
+              className={`group relative min-w-[176px] snap-start px-4 py-4 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-500 motion-reduce:transition-none max-sm:min-w-[128px] max-sm:px-2.5 max-sm:py-2.5 sm:min-w-[205px] sm:px-5 sm:py-5 ${
                 isOverlay
                   ? 'shrink-0 basis-[calc(100%/2)] bg-transparent text-[#1b304d] hover:bg-white/70 md:basis-[calc(100%/3)]'
                   : `shrink-0 rounded-xl border ${
@@ -172,18 +172,18 @@ export const LocationSelector: React.FC<LocationSelectorProps> = ({
             >
               {isOverlay && index > 0 && (
                 <span
-                  className="absolute bottom-5 left-0 top-5 w-px bg-slate-200 sm:bottom-6 sm:top-6"
+                  className="absolute bottom-5 left-0 top-5 w-px bg-slate-200 max-sm:bottom-3 max-sm:top-3 sm:bottom-6 sm:top-6"
                   aria-hidden="true"
                 />
               )}
 
-              <span className="text-eyebrow block pr-20 text-red-500">
+              <span className="text-eyebrow block pr-20 text-red-500 max-sm:pr-12 max-sm:text-[10px]">
                 {areaName}
               </span>
-              <span className="mt-2 block text-[16px] font-extrabold leading-5 text-[#1b304d] sm:text-[20px] sm:leading-6">
+              <span className="mt-2 block text-[16px] font-extrabold leading-5 text-[#1b304d] max-sm:mt-1 max-sm:text-[13px] max-sm:leading-4 sm:text-[20px] sm:leading-6">
                 {clinic.shortName}
               </span>
-              <span className="text-meta mt-1 block font-medium text-[#5f7088]">
+              <span className="text-meta mt-1 block font-medium text-[#5f7088] max-sm:mt-0.5 max-sm:text-[11px]">
                 {clinic.area}
               </span>
 
