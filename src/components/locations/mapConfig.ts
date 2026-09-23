@@ -36,7 +36,7 @@ export const GOOGLE_MAP_OPTIONS = {
   keyboardShortcuts: true,
   mapTypeControl: false,
   rotateControl: false,
-  scaleControl: true,
+  scaleControl: false,
   streetViewControl: true,
   tilt: 0,
   zoomControl: true,

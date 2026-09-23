@@ -601,7 +601,7 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
 
             <div
               ref={mapElementRef}
-              className={`absolute inset-0 bg-[#dfe7ef] transition-opacity duration-300 ${
+              className={`absolute inset-0 isolate bg-[#dfe7ef] transition-opacity duration-300 ${
                 loadState === 'ready' ? 'opacity-100' : 'pointer-events-none opacity-0'
               }`}
               aria-label="Interactive Google Map showing Prof. Sheth consultation hospital locations"
@@ -672,7 +672,7 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
               </div>
             )}
 
-            <div className="absolute bottom-12 left-3 right-3 z-30 md:bottom-4 md:left-4 md:right-auto">
+            <div className="absolute bottom-14 left-3 right-3 z-30 md:bottom-10 md:left-4 md:right-auto">
               <LocationSelector
                 clinics={visibleClinics}
                 selectedClinicId={selectedClinicId}
