@@ -10,7 +10,7 @@ import {
 } from '../../data/clinics';
 import { LocationDetailStrip } from './LocationDetailStrip';
 import { LocationSelector } from './LocationSelector';
-import { GoogleMapsEmbedPreview } from './GoogleMapsEmbedPreview';
+import { StaticLocationMapPreview } from './StaticLocationMapPreview';
 import { loadGoogleMaps } from './googleMapsLoader';
 import {
   GOOGLE_MAP_OPTIONS,
@@ -592,10 +592,11 @@ export const InteractiveLocationsMap: React.FC<InteractiveLocationsMapProps> = (
         <div className="mt-6">
           <div className="relative h-[560px] overflow-hidden rounded-[22px] border border-white/80 bg-[#c6e0eb] shadow-[0_24px_72px_rgba(53,91,122,0.28)] sm:h-[610px] lg:h-[620px]">
             {loadState !== 'ready' && (
-              <GoogleMapsEmbedPreview
+              <StaticLocationMapPreview
                 clinics={visibleClinics}
                 mapMode={mapMode}
                 selectedClinicId={selectedClinicId}
+                onSelect={handleSelectClinic}
               />
             )}
 
