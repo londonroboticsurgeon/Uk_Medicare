@@ -617,9 +617,9 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives may include observation, medicines for symptom control or endoscopic treatment for bile duct stones.' },
     ],
     relatedTreatmentIds: ['bile-duct-exploration'],
-    seoTitle: 'Gallbladder Surgery | Laparoscopic Cholecystectomy',
+    seoTitle: 'Gallbladder Surgeon London | Laparoscopic Cholecystectomy',
     seoDescription:
-      'Patient guide to gallbladder surgery and laparoscopic cholecystectomy for gallstones, including assessment, procedure, risks and recovery.',
+      'Patient guide to gallbladder surgery in London with Prof. Hemant Sheth, covering laparoscopic cholecystectomy for gallstones, assessment, procedure, risks and recovery.',
   },
   {
     id: 'laparoscopic-hernia-surgery',
