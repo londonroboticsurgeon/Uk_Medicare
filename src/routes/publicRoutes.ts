@@ -46,8 +46,8 @@ const treatmentRoutes: PublicRoute[] = treatmentPublicRoutes.map((path) => {
 const locationRoutes: PublicRoute[] = publicClinicLocations.map((clinic) => ({
   path: `/locations/${clinic.id}`,
   kind: 'location',
-  title: `${clinic.name} | Prof. Hemant Sheth`,
-  description: `Verified clinic information for Prof. Hemant Sheth at ${clinic.name}, including address, consultation availability, travel information and appointment options.`,
+  title: `${clinic.name} | Upper GI Surgeon ${clinic.area}`,
+  description: `Verified clinic information for Prof. Hemant Sheth, Consultant Upper GI, Laparoscopic and Robotic Surgeon, at ${clinic.name} in ${clinic.area}, including address, consultation availability, travel information and appointment options.`,
   h1: clinic.name,
   indexable: true,
   includeInSitemap: true,

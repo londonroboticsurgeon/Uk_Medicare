@@ -113,9 +113,9 @@ export const treatmentCategories: TreatmentCategory[] = [
     ],
     treatmentIds: ['upper-gi-endoscopy', 'anti-reflux-surgery',
     ],
-    seoTitle: 'Upper GI Treatments | Prof. Hemant Sheth',
+    seoTitle: 'Upper GI Surgeon London | Upper GI Treatments',
     seoDescription:
-      'Upper GI care with Prof. Hemant Sheth, including upper GI endoscopy and anti-reflux surgery for selected oesophageal, stomach and reflux symptoms.',
+      'Upper GI care in London with Prof. Hemant Sheth, Consultant Upper GI Surgeon, including upper GI endoscopy and anti-reflux surgery for selected oesophageal, stomach and reflux symptoms.',
   },
   {
     id: 'hpb',
@@ -165,9 +165,9 @@ export const treatmentCategories: TreatmentCategory[] = [
       'splenectomy',
       'gallbladder-surgery',
     ],
-    seoTitle: 'HPB Treatments | Gallbladder, Bile Duct, Liver and Spleen Surgery',
+    seoTitle: 'HPB Surgeon London | Gallbladder, Bile Duct, Liver and Spleen Surgery',
     seoDescription:
-      'HPB treatment information for gallbladder surgery, bile duct exploration, benign liver disease surgery and splenectomy with Prof. Hemant Sheth.',
+      'HPB and hepatobiliary treatment in London for gallbladder surgery, bile duct exploration, benign liver disease surgery and splenectomy with Prof. Hemant Sheth.',
   },
   {
     id: 'hernia',
@@ -216,9 +216,9 @@ export const treatmentCategories: TreatmentCategory[] = [
       'diaphragmatic-hernia',
       'complex-incisional-hernia',
     ],
-    seoTitle: 'Hernia Surgery | Laparoscopic and Complex Hernia Treatments',
+    seoTitle: 'Hernia Surgeon London | Laparoscopic and Complex Hernia Treatments',
     seoDescription:
-      'Hernia surgery information covering laparoscopic hernia repair, diaphragmatic hernia repair and complex incisional hernia treatment.',
+      'Hernia surgery in London covering laparoscopic hernia repair, diaphragmatic hernia repair and complex incisional hernia treatment.',
   },
   {
     id: 'appendicectomy',
@@ -261,9 +261,9 @@ export const treatmentCategories: TreatmentCategory[] = [
       },
     ],
     treatmentIds: ['laparoscopic-appendicectomy'],
-    seoTitle: 'Appendicectomy | Laparoscopic Appendix Surgery',
+    seoTitle: 'Appendix Surgery London | Laparoscopic Appendicectomy',
     seoDescription:
-      'Patient information about appendicectomy and laparoscopic appendix surgery for appendicitis, including assessment, surgery and recovery themes.',
+      'Patient information about appendicectomy and laparoscopic appendix surgery in London for appendicitis, including assessment, surgery and recovery themes.',
   },
 ];
 
@@ -355,9 +355,9 @@ export const treatmentPages: TreatmentPage[] = [
       },
     ],
     relatedTreatmentIds: ['anti-reflux-surgery'],
-    seoTitle: 'Upper GI Endoscopy | Gastroscopy with Prof. Hemant Sheth',
+    seoTitle: 'Upper GI Endoscopy London | Gastroscopy',
     seoDescription:
-      'Patient guide to upper GI endoscopy, including why gastroscopy may be recommended, preparation, procedure steps, risks and aftercare.',
+      'Patient guide to upper GI endoscopy and gastroscopy in London, including why it may be recommended, preparation, procedure steps, risks and aftercare.',
   },
   {
     id: 'anti-reflux-surgery',
@@ -446,9 +446,9 @@ export const treatmentPages: TreatmentPage[] = [
       },
     ],
     relatedTreatmentIds: ['upper-gi-endoscopy'],
-    seoTitle: 'Anti-Reflux Surgery | Laparoscopic Fundoplication',
+    seoTitle: 'Reflux & Hiatus Hernia Surgeon London | Laparoscopic Fundoplication',
     seoDescription:
-      'Patient guide to anti-reflux surgery and laparoscopic fundoplication, including indications, assessment, procedure, recovery and risks.',
+      'Patient guide to anti-reflux (GORD) surgery and laparoscopic fundoplication in London, including indications, assessment, procedure, recovery and risks.',
   },
   {
     id: 'bile-duct-exploration',
@@ -488,9 +488,9 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives may include ERCP, observation or staged gallbladder and bile duct treatment depending on the case.' },
     ],
     relatedTreatmentIds: ['gallbladder-surgery'],
-    seoTitle: 'Laparoscopic Bile Duct Exploration | HPB Treatment',
+    seoTitle: 'Bile Duct Surgeon London | Laparoscopic Bile Duct Exploration',
     seoDescription:
-      'Patient guide to laparoscopic bile duct exploration for common bile duct stones, including assessment, procedure, risks and aftercare.',
+      'Patient guide to laparoscopic bile duct exploration in London for common bile duct stones, including assessment, procedure, risks and aftercare.',
   },
   {
     id: 'benign-liver-disease-surgery',
@@ -533,9 +533,9 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives may include observation, repeat imaging, non-surgical treatment or open surgery depending on diagnosis.' },
     ],
     relatedTreatmentIds: ['splenectomy', 'gallbladder-surgery'],
-    seoTitle: 'Laparoscopic Benign Liver Disease Surgery | Prof. Hemant Sheth',
+    seoTitle: 'Liver Surgeon London | Laparoscopic Benign Liver Disease Surgery',
     seoDescription:
-      'Patient information about laparoscopic surgery for selected benign liver disease, including assessment, planning, risks and recovery themes.',
+      'Patient information about liver surgery in London for selected benign liver disease, including assessment, planning, risks and recovery themes.',
   },
   {
     id: 'splenectomy',
@@ -575,9 +575,9 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives depend on the diagnosis and may include monitoring, medicines or non-surgical specialist management.' },
     ],
     relatedTreatmentIds: ['benign-liver-disease-surgery'],
-    seoTitle: 'Laparoscopic Splenectomy | Spleen Surgery Information',
+    seoTitle: 'Spleen Surgeon London | Laparoscopic Splenectomy',
     seoDescription:
-      'Patient guide to laparoscopic splenectomy, including reasons for spleen removal, preparation, surgical approach, risks and aftercare.',
+      'Patient guide to spleen surgery (laparoscopic splenectomy) in London, including reasons for spleen removal, preparation, surgical approach, risks and aftercare.',
   },
   {
     id: 'gallbladder-surgery',
@@ -659,9 +659,9 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives may include watchful waiting, open repair or complex abdominal wall reconstruction in selected cases.' },
     ],
     relatedTreatmentIds: ['complex-incisional-hernia', 'diaphragmatic-hernia'],
-    seoTitle: 'Laparoscopic Hernia Surgery | TEP and TAPP Repair',
+    seoTitle: 'Laparoscopic Hernia Repair London | TEP and TAPP Surgery',
     seoDescription:
-      'Patient guide to laparoscopic hernia surgery, including TEP and TAPP repair, assessment, procedure, risks and recovery planning.',
+      'Patient guide to laparoscopic hernia repair in London, including TEP and TAPP techniques, assessment, procedure, risks and recovery planning.',
   },
   {
     id: 'diaphragmatic-hernia',
@@ -701,9 +701,9 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives depend on hernia type and symptoms and may include observation or open repair.' },
     ],
     relatedTreatmentIds: ['laparoscopic-hernia-surgery', 'anti-reflux-surgery'],
-    seoTitle: 'Diaphragmatic Hernia Repair | Laparoscopic Hernia Surgery',
+    seoTitle: 'Diaphragmatic Hernia Repair London | Laparoscopic Hernia Surgery',
     seoDescription:
-      'Patient guide to laparoscopic repair of diaphragmatic hernia, including assessment, surgery, risks and recovery themes.',
+      'Patient guide to laparoscopic repair of diaphragmatic hernia in London, including assessment, surgery, risks and recovery themes.',
   },
   {
     id: 'complex-incisional-hernia',
@@ -746,9 +746,9 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives may include observation, abdominal support, open repair or complex abdominal wall reconstruction.' },
     ],
     relatedTreatmentIds: ['laparoscopic-hernia-surgery'],
-    seoTitle: 'Complex Incisional Hernia Surgery | Prof. Hemant Sheth',
+    seoTitle: 'Complex Incisional Hernia Surgery London | Prof. Hemant Sheth',
     seoDescription:
-      'Patient guide to complex incisional hernia surgery, including assessment, repair options, risks, recovery and warning signs.',
+      'Patient guide to complex incisional hernia surgery in London, including assessment, repair options, risks, recovery and warning signs.',
   },
   {
     id: 'laparoscopic-appendicectomy',
@@ -788,9 +788,9 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives depend on diagnosis and severity and may include antibiotics, observation or open surgery.' },
     ],
     relatedTreatmentIds: [],
-    seoTitle: 'Laparoscopic Appendicectomy | Appendix Surgery',
+    seoTitle: 'Appendix Surgeon London | Laparoscopic Appendicectomy',
     seoDescription:
-      'Patient guide to laparoscopic appendicectomy for appendicitis, including assessment, procedure, recovery, risks and warning signs.',
+      'Patient guide to laparoscopic appendicectomy in London for appendicitis, including assessment, procedure, recovery, risks and warning signs.',
   },
 ];
 
@@ -820,9 +820,9 @@ export const getRelatedTreatments = (treatment: TreatmentPage) =>
 export const getTreatmentRouteSeo = (path: string) => {
   if (path === '/treatments') {
     return {
-      title: 'Treatments & Specialities | Prof. Hemant Sheth',
+      title: 'Treatments & Specialities in London | Prof. Hemant Sheth',
       description:
-        'Explore upper GI, HPB, hernia and appendicectomy treatment information from Prof. Hemant Sheth, with dedicated patient guides for each speciality.',
+        'Explore upper GI, HPB, hernia and appendicectomy treatment information in London from Prof. Hemant Sheth, with dedicated patient guides for each speciality.',
       canonicalPath: '/treatments',
       h1: 'Treatments & Specialities',
     };
