@@ -1,8 +1,10 @@
 import React from 'react';
-import { Phone, ChevronRight, AlertTriangle } from 'lucide-react';
+import { Phone, ChevronRight, AlertTriangle, ExternalLink } from 'lucide-react';
 import { professionalIdentity, getVerified } from '../data/professionalIdentity';
 import { contactInfo, getVerifiedContact } from '../data/contactInfo';
 import { publicClinicLocations, getClinicAvailabilitySummary } from '../data/clinics';
+
+const AGENCY_URL = 'https://www.cogniversestudio.com/';
 
 interface FooterProps {
   onOpenBooking: () => void;
@@ -154,15 +156,34 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onViewProfile }) 
             Designed, developed &amp; powered by
           </span>
           <span aria-hidden="true" className="hidden sm:block h-8 w-px bg-white/15" />
-          <img
-            src="/techcogniverse-logo-dark.webp"
-            alt="TechCogniverse — CogniVerse Studio"
-            width={1200}
-            height={266}
-            loading="lazy"
-            decoding="async"
-            className="h-12 sm:h-14 w-auto transition duration-300 hover:drop-shadow-[0_0_14px_rgba(34,211,238,0.35)]"
-          />
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-5">
+            <a
+              href={AGENCY_URL}
+              target="_blank"
+              rel="noopener"
+              aria-label="CogniVerse Studio website (opens in a new tab)"
+              className="rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+            >
+              <img
+                src="/techcogniverse-logo-dark.webp"
+                alt="TechCogniverse — CogniVerse Studio"
+                width={1200}
+                height={266}
+                loading="lazy"
+                decoding="async"
+                className="h-12 sm:h-14 w-auto transition duration-300 hover:drop-shadow-[0_0_14px_rgba(34,211,238,0.35)]"
+              />
+            </a>
+            <a
+              href={AGENCY_URL}
+              target="_blank"
+              rel="noopener"
+              className="text-caption inline-flex items-center gap-1.5 text-cyan-300 hover:text-cyan-200 hover:underline underline-offset-4 transition"
+            >
+              cogniversestudio.com
+              <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+            </a>
+          </div>
         </div>
 
       </div>
