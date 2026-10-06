@@ -147,23 +147,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onViewProfile }) 
           </p>
         </div>
 
-        {/* Agency credit — the logo artwork has dark lettering, so it sits on
-            a light badge to stay legible against the navy footer */}
-        <div className="mt-8 pt-6 border-t border-navy-800 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-          <span className="text-caption uppercase tracking-[0.18em] text-slate-400">
+        {/* Agency credit — uses the dark-background logo variant (white
+            wordmark, lifted grey pixels) so it sits directly on the navy */}
+        <div className="mt-8 pt-7 border-t border-navy-800 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+          <span className="text-caption uppercase tracking-[0.2em] text-slate-400">
             Designed, developed &amp; powered by
           </span>
-          <span className="inline-flex items-center rounded-xl bg-white px-4 py-2 shadow-lg shadow-black/20 ring-1 ring-white/10 transition hover:-translate-y-0.5 hover:shadow-teal-500/20">
-            <img
-              src="/techcogniverse-logo.webp"
-              alt="TechCogniverse — CogniVerse Studio"
-              width={640}
-              height={154}
-              loading="lazy"
-              decoding="async"
-              className="h-10 sm:h-12 w-auto"
-            />
-          </span>
+          <span aria-hidden="true" className="hidden sm:block h-8 w-px bg-white/15" />
+          <img
+            src="/techcogniverse-logo-dark.webp"
+            alt="TechCogniverse — CogniVerse Studio"
+            width={1200}
+            height={266}
+            loading="lazy"
+            decoding="async"
+            className="h-12 sm:h-14 w-auto transition duration-300 hover:drop-shadow-[0_0_14px_rgba(34,211,238,0.35)]"
+          />
         </div>
 
       </div>
