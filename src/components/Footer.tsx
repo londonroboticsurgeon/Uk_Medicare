@@ -147,6 +147,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onViewProfile }) 
           </p>
         </div>
 
+        {/* Agency credit — the logo artwork has dark lettering, so it sits on
+            a light badge to stay legible against the navy footer */}
+        <div className="mt-8 pt-6 border-t border-navy-800 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <span className="text-caption uppercase tracking-[0.18em] text-slate-400">
+            Designed, developed &amp; powered by
+          </span>
+          <span className="inline-flex items-center rounded-xl bg-white px-4 py-2 shadow-lg shadow-black/20 ring-1 ring-white/10 transition hover:-translate-y-0.5 hover:shadow-teal-500/20">
+            <img
+              src="/techcogniverse-logo.webp"
+              alt="TechCogniverse — CogniVerse Studio"
+              width={640}
+              height={154}
+              loading="lazy"
+              decoding="async"
+              className="h-10 sm:h-12 w-auto"
+            />
+          </span>
+        </div>
+
       </div>
     </footer>
   );
