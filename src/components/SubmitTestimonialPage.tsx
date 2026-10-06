@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { legacyProfileIntro } from '../data/legacyProfile';
 import { patientTestimonials } from '../data/patientTestimonials';
+import { sendTestimonialSubmission } from '../lib/sendConsultationRequest';
 
 interface SubmitTestimonialPageProps {
   onOpenBooking: () => void;
@@ -48,10 +49,30 @@ export const SubmitTestimonialPage: React.FC<SubmitTestimonialPageProps> = ({
   const [testimonial, setTestimonial] = useState('');
   const [publishConsent, setPublishConsent] = useState(true);
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendError, setSendError] = useState('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    if (isSending) return;
+    setIsSending(true);
+    setSendError('');
+    try {
+      await sendTestimonialSubmission({
+        reviewType,
+        careContext,
+        rating,
+        name: privateName,
+        contact: contactDetail,
+        testimonial,
+        publishConsent,
+      });
+      setSubmitted(true);
+    } catch {
+      setSendError('Sorry, your testimonial could not be sent. Please try again shortly.');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const formLabelClass = 'text-form-label block font-bold uppercase tracking-[0.08em] text-slate-700';
@@ -265,12 +286,19 @@ export const SubmitTestimonialPage: React.FC<SubmitTestimonialPageProps> = ({
                   </span>
                 </label>
 
+                {sendError && (
+                  <p role="alert" className="text-form-help text-red-700">
+                    {sendError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className={`${primaryButtonClass} w-full sm:w-auto`}
+                  disabled={isSending}
+                  className={`${primaryButtonClass} w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60`}
                 >
                   <Send className="h-4 w-4" />
-                  <span>Submit Your Testimonial</span>
+                  <span>{isSending ? 'Sending…' : 'Submit Your Testimonial'}</span>
                 </button>
               </form>
             )}

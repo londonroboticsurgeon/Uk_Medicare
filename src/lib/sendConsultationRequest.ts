@@ -90,3 +90,61 @@ export async function sendConsultationRequest(payload: ConsultationRequestPayloa
     publicKey: config.publicKey,
   });
 }
+
+export type TestimonialSubmissionPayload = {
+  reviewType: string;
+  careContext: string;
+  rating: number;
+  name: string;
+  contact: string;
+  testimonial: string;
+  publishConsent: boolean;
+};
+
+/** Sends a testimonial submission through the same EmailJS service/template as consultation requests. */
+export async function sendTestimonialSubmission(payload: TestimonialSubmissionPayload): Promise<void> {
+  const config = getEmailJsConfig();
+  if (!config) {
+    throw new Error(
+      'Email is not configured. Add VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY to your .env file.'
+    );
+  }
+
+  const name = payload.name || 'Anonymous';
+  const contactIsEmail = payload.contact.includes('@');
+  const message = [
+    'New testimonial submission from keyholesurgeon.co.uk',
+    '',
+    `Review type: ${payload.reviewType}`,
+    `Care area: ${payload.careContext}`,
+    `Rating: ${payload.rating}/5`,
+    `Name (private): ${name}`,
+    `Contact (private): ${payload.contact || '—'}`,
+    `Consent to publish: ${payload.publishConsent ? 'Yes' : 'No'}`,
+    '',
+    payload.testimonial,
+  ].join('\n');
+
+  const templateParams = {
+    to_email: CONSULTATION_INBOX_EMAIL,
+    title: `New testimonial from ${name}`,
+    name,
+    email: contactIsEmail ? payload.contact : '',
+    reply_to: contactIsEmail ? payload.contact : '',
+    from_name: name,
+    message,
+    patient_name: name,
+    patient_phone: contactIsEmail ? 'N/A' : payload.contact || 'N/A',
+    patient_email: contactIsEmail ? payload.contact : 'N/A',
+    funding_type: 'N/A (testimonial)',
+    hospital: payload.careContext,
+    procedure: `Testimonial: ${payload.reviewType}`,
+    preferred_timing: 'N/A',
+    insurer_name: 'N/A',
+    auth_code: 'N/A',
+  };
+
+  await emailjs.send(config.serviceId, config.templateId, templateParams, {
+    publicKey: config.publicKey,
+  });
+}
