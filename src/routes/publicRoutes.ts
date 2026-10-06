@@ -46,8 +46,8 @@ const treatmentRoutes: PublicRoute[] = treatmentPublicRoutes.map((path) => {
 const locationRoutes: PublicRoute[] = publicClinicLocations.map((clinic) => ({
   path: `/locations/${clinic.id}`,
   kind: 'location',
-  title: `${clinic.name} | Prof. Hemant Sheth`,
-  description: `Verified clinic information for Prof. Hemant Sheth at ${clinic.name}, including address, consultation availability, travel information and appointment options.`,
+  title: `${clinic.name} | Upper GI Surgeon ${clinic.area}`,
+  description: `Verified clinic information for Prof. Hemant Sheth, Consultant Upper GI, Laparoscopic and Robotic Surgeon, at ${clinic.name} in ${clinic.area}, including address, consultation availability, travel information and appointment options.`,
   h1: clinic.name,
   indexable: true,
   includeInSitemap: true,
@@ -58,10 +58,10 @@ export const publicRoutes: PublicRoute[] = [
   {
     path: '/',
     kind: 'home',
-    title: 'Prof. Hemant Sheth | Robotic & Laparoscopic Surgeon London',
+    title: 'Prof. Hemant Sheth | Robotic Surgeon London, Laparoscopic & Upper GI Surgery',
     description:
       'Official website of Prof. Hemant Sheth, Consultant Upper GI, Laparoscopic and Robotic Surgeon serving London and Hertfordshire.',
-    h1: 'Specialist Robotic & Laparoscopic Upper GI Surgeon',
+    h1: 'Specialist Robotic & Laparoscopic Upper GI Surgeon in London',
     indexable: true,
     includeInSitemap: true,
   },
@@ -69,9 +69,9 @@ export const publicRoutes: PublicRoute[] = [
   {
     path: '/robotic-surgery',
     kind: 'robotic',
-    title: 'Robotic Surgery Information | Prof. Hemant Sheth',
+    title: 'Robotic Surgeon London | Robotic Surgery Information',
     description:
-      'Patient-focused information about robotic-assisted surgery, assessment and treatment planning from Prof. Hemant Sheth.',
+      'Patient-focused information about robotic-assisted surgery in London from Prof. Hemant Sheth, Robotic Surgeon, covering assessment and treatment planning.',
     h1: 'Robotic-Assisted Surgery',
     indexable: true,
     includeInSitemap: true,
@@ -90,9 +90,9 @@ export const publicRoutes: PublicRoute[] = [
   {
     path: '/about-prof-hemant-sheth',
     kind: 'about',
-    title: 'About Prof. Hemant Sheth | Consultant Upper GI Surgeon',
+    title: 'About Prof. Hemant Sheth | Consultant Upper GI Surgeon in London',
     description:
-      'Verified professional profile of Prof. Hemant Sheth, including his clinical role, areas of practice, memberships and languages.',
+      'Verified professional profile of Prof. Hemant Sheth, Consultant Upper GI Surgeon in London, including his clinical role, areas of practice, memberships and languages.',
     h1: 'About Prof. Hemant Sheth',
     indexable: true,
     includeInSitemap: true,
