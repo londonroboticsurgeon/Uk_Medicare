@@ -17,12 +17,9 @@ import { ConsultationModal } from './components/ConsultationModal';
 import { ProfileModal } from './components/ProfileModal';
 import { SubmitTestimonialPage } from './components/SubmitTestimonialPage';
 import {
-  getTreatmentBreadcrumbs,
-  getTreatmentCategoryById,
-  getTreatmentPageByPath,
-  getTreatmentRouteSeo,
   isKnownTreatmentPath,
 } from './data/treatmentHierarchy';
+import { getRouteMetadata, getRouteStructuredData } from './routeSeo';
 
 type PagePath = string;
 
@@ -31,14 +28,6 @@ const TREATMENTS_PATH: PagePath = '/treatments';
 const ROBOTIC_SURGERY_PATH: PagePath = '/robotic-surgery';
 const ROBOTIC_COMPARISON_PATH: PagePath = '/robotic-surgery/compare';
 const SUBMIT_TESTIMONIAL_PATH: PagePath = '/submit-testimonial';
-const SITE_TITLE =
-  'Prof. Hemant Sheth | Consultant Upper GI, Laparoscopic & Robotic Surgeon London & Hertfordshire';
-const SITE_ORIGIN = 'https://www.keyholesurgeon.co.uk';
-const DEFAULT_DESCRIPTION =
-  'Prof. Hemant Sheth is a Consultant Upper GI, Laparoscopic and Robotic Surgeon providing private care across London and Hertfordshire.';
-
-const getCanonicalUrl = (path: string) => `${SITE_ORIGIN}${path === HOME_PATH ? '/' : path}`;
-
 const setMetaContent = (selector: string, content: string) => {
   const element = document.head.querySelector<HTMLMetaElement>(selector);
   if (element) {
@@ -57,66 +46,15 @@ const setRouteCanonical = (canonicalUrl: string) => {
   canonical.href = canonicalUrl;
 };
 
-const setRouteStructuredData = (path: string, title: string, description: string) => {
+const setRouteStructuredData = (path: string) => {
   const scriptId = 'route-structured-data';
   const existingScript = document.getElementById(scriptId);
+  const structuredData = getRouteStructuredData(path, getRouteMetadata(path));
 
-  if (!path.startsWith(TREATMENTS_PATH)) {
+  if (!structuredData) {
     existingScript?.remove();
     return;
   }
-
-  const canonicalUrl = getCanonicalUrl(path);
-  const breadcrumbs = getTreatmentBreadcrumbs(path);
-  const treatment = getTreatmentPageByPath(path);
-  const category = treatment ? getTreatmentCategoryById(treatment.categoryId) : null;
-
-  const graph: Record<string, unknown>[] = [
-    {
-      '@type': 'BreadcrumbList',
-      '@id': `${canonicalUrl}#breadcrumb`,
-      itemListElement: breadcrumbs.map((breadcrumb, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        name: breadcrumb.label,
-        item: getCanonicalUrl(breadcrumb.path),
-      })),
-    },
-    {
-      '@type': 'WebPage',
-      '@id': `${canonicalUrl}#webpage`,
-      url: canonicalUrl,
-      name: title,
-      description,
-      breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
-      isPartOf: {
-        '@type': 'WebSite',
-        '@id': `${SITE_ORIGIN}/#website`,
-        name: 'Prof. Hemant Sheth',
-        url: `${SITE_ORIGIN}/`,
-      },
-    },
-  ];
-
-  if (treatment) {
-    graph.push({
-      '@type': 'MedicalProcedure',
-      '@id': `${canonicalUrl}#procedure`,
-      name: treatment.title,
-      description: treatment.answerFirst,
-      bodyLocation: category?.title,
-      url: canonicalUrl,
-    });
-  }
-
-  const jsonLd = JSON.stringify(
-    {
-      '@context': 'https://schema.org',
-      '@graph': graph,
-    },
-    null,
-    2
-  );
 
   const script =
     existingScript instanceof HTMLScriptElement
@@ -124,7 +62,7 @@ const setRouteStructuredData = (path: string, title: string, description: string
       : document.createElement('script');
   script.id = scriptId;
   script.type = 'application/ld+json';
-  script.textContent = jsonLd;
+  script.textContent = JSON.stringify(structuredData, null, 2);
 
   if (!existingScript) {
     document.head.appendChild(script);
@@ -204,9 +142,9 @@ const getRouteFromHref = (href: string): { path: PagePath; hash?: string } | nul
   return null;
 };
 
-export function App() {
-  const [currentPath, setCurrentPath] = useState<PagePath>(() => getCurrentPath());
-  const [activeTab, setActiveTab] = useState<string>(() => getActiveTabForLocation());
+export function App({ initialPath }: { initialPath?: PagePath }) {
+  const [currentPath, setCurrentPath] = useState<PagePath>(() => initialPath ?? getCurrentPath());
+  const [activeTab, setActiveTab] = useState<string>(() => initialPath ? getActiveTabForPath(initialPath) : getActiveTabForLocation());
   const [bookingModalOpen, setBookingModalOpen] = useState<boolean>(false);
   const [profileModalOpen, setProfileModalOpen] = useState<boolean>(false);
   const [selectedProcedure, setSelectedProcedure] = useState<string>('');
@@ -226,39 +164,7 @@ export function App() {
   useEffect(() => {
     setActiveTab(getActiveTabForLocation());
 
-    const treatmentSeo = getTreatmentRouteSeo(currentPath);
-    const routeMeta = treatmentSeo
-      ? {
-          title: treatmentSeo.title,
-          description: treatmentSeo.description,
-          canonicalUrl: getCanonicalUrl(treatmentSeo.canonicalPath),
-        }
-      : currentPath === ROBOTIC_SURGERY_PATH
-        ? {
-            title: `Robotic Surgery | ${SITE_TITLE}`,
-            description:
-              'Robotic surgery information from Prof. Hemant Sheth, including how robotic-assisted procedures may support selected upper GI and laparoscopic surgery.',
-            canonicalUrl: getCanonicalUrl(ROBOTIC_SURGERY_PATH),
-          }
-        : currentPath === ROBOTIC_COMPARISON_PATH
-          ? {
-              title: `Compare Surgical Approaches | ${SITE_TITLE}`,
-              description:
-                'Compare open, laparoscopic and robotic-assisted surgical approaches with patient-focused information from Prof. Hemant Sheth.',
-              canonicalUrl: getCanonicalUrl(ROBOTIC_COMPARISON_PATH),
-            }
-          : currentPath === SUBMIT_TESTIMONIAL_PATH
-            ? {
-                title: `Submit Your Testimonial | ${SITE_TITLE}`,
-                description:
-                  'Submit patient feedback for Prof. Hemant Sheth through the website testimonial page.',
-                canonicalUrl: getCanonicalUrl(SUBMIT_TESTIMONIAL_PATH),
-              }
-            : {
-                title: SITE_TITLE,
-                description: DEFAULT_DESCRIPTION,
-                canonicalUrl: getCanonicalUrl(HOME_PATH),
-              };
+    const routeMeta = getRouteMetadata(currentPath);
 
     document.title = routeMeta.title;
     setMetaContent('meta[name="title"]', routeMeta.title);
@@ -270,7 +176,7 @@ export function App() {
     setMetaContent('meta[property="twitter:description"]', routeMeta.description);
     setMetaContent('meta[property="twitter:url"]', routeMeta.canonicalUrl);
     setRouteCanonical(routeMeta.canonicalUrl);
-    setRouteStructuredData(currentPath, routeMeta.title, routeMeta.description);
+    setRouteStructuredData(currentPath);
   }, [currentPath]);
 
   useEffect(() => {

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://www.keyholesurgeon.co.uk/sitemap.xml
+Sitemap: https://londonroboticsurgeon.co.uk/sitemap.xml
 
 # Explicit Bot Directives for Search & AI Answer Engines (AEO)
 User-agent: Googlebot
