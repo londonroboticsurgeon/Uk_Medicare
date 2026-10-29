@@ -112,6 +112,18 @@ export function getRouteStructuredData(path: string, metadata: RouteMetadata) {
       bodyLocation: category?.title,
       url: metadata.canonicalUrl,
     });
+
+    if (treatment.faqs?.length) {
+      graph.push({
+        '@type': 'FAQPage',
+        '@id': `${metadata.canonicalUrl}#faq`,
+        mainEntity: treatment.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
+      });
+    }
   }
 
   return { '@context': 'https://schema.org', '@graph': graph };

@@ -470,6 +470,23 @@ const TreatmentPageView: React.FC<{
               ))}
             </div>
 
+            {treatment.faqs && treatment.faqs.length > 0 && (
+              <section className="mt-10">
+                <p className="text-eyebrow text-sky-700">Frequently asked questions</p>
+                <h2 className="mt-2 font-serif text-[28px] font-bold leading-tight text-navy-900">
+                  {treatment.faqHeading ?? `Questions about ${treatment.shortTitle}`}
+                </h2>
+                <div className="mt-5 space-y-3">
+                  {treatment.faqs.map((faq) => (
+                    <div key={faq.question} className="rounded-lg border border-slate-200 bg-white p-4 sm:p-5">
+                      <h3 className="text-body font-bold text-navy-900">{faq.question}</h3>
+                      <p className="mt-2 text-body-small text-slate-700">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
             <section className="mt-10 rounded-[18px] border border-slate-200 bg-white p-5 sm:p-6">
               <p className="text-eyebrow text-sky-700">Clinical review information</p>
               <h2 className="mt-2 font-serif text-[28px] font-bold leading-tight text-navy-900">

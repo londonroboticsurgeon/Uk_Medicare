@@ -52,6 +52,14 @@ export interface TreatmentPage {
   relatedTreatmentIds: string[];
   seoTitle: string;
   seoDescription: string;
+  /** Rendered on the page and emitted as FAQPage structured data. */
+  faqs?: TreatmentFaq[];
+  faqHeading?: string;
+}
+
+export interface TreatmentFaq {
+  question: string;
+  answer: string;
 }
 
 export interface TreatmentBreadcrumb {
@@ -615,9 +623,36 @@ export const treatmentPages: TreatmentPage[] = [
       { title: 'Alternatives', body: 'Alternatives may include observation, medicines for symptom control or endoscopic treatment for bile duct stones.' },
     ],
     relatedTreatmentIds: ['bile-duct-exploration'],
-    seoTitle: 'Gallbladder Surgery | Laparoscopic Cholecystectomy',
+    // Targets "gallbladder specialist London" searches (including "top/best"
+    // variants) without making a superiority claim — see
+    // docs/seo/keyword-intent-map.md §15 and the ASA/CAP rules on unproven
+    // comparative claims in healthcare advertising.
+    seoTitle: 'Gallbladder Specialist London | Gallbladder Surgery',
     seoDescription:
-      'Patient guide to gallbladder surgery and laparoscopic cholecystectomy for gallstones, including assessment, procedure, risks and recovery.',
+      'Gallbladder specialist in London for gallstones and keyhole gallbladder removal. Prof. Hemant Sheth, Consultant HPB surgeon, sees patients in Brentford and Chiswick.',
+    faqHeading: 'Seeing a gallbladder specialist in London',
+    faqs: [
+      {
+        question: 'How do I choose a gallbladder specialist in London?',
+        answer:
+          'Look for a consultant surgeon who specialises in upper GI and hepatobiliary (HPB) surgery and regularly performs laparoscopic cholecystectomy. They should explain how your symptoms and imaging are assessed, discuss the risks and alternatives to surgery, and be listed on the GMC medical register. Prof. Hemant Sheth is a Consultant Upper GI, Laparoscopic & Hepatobiliary Surgeon.',
+      },
+      {
+        question: 'Where can I see a gallbladder specialist in London?',
+        answer:
+          'Prof. Hemant Sheth offers private consultations for gallbladder and gallstone problems at Syon Clinic in Brentford (TW8 9DU) and Chiswick Medical Centre in Chiswick (W4 4HS), West London.',
+      },
+      {
+        question: 'When should I see a gallbladder specialist?',
+        answer:
+          'A specialist review is worth considering if you have gallstones causing pain or complications, episodes of gallbladder inflammation, or gallstone-related pancreatitis. Seek urgent medical advice for fever, jaundice, worsening abdominal pain or persistent vomiting.',
+      },
+      {
+        question: 'Is gallbladder removal done by keyhole surgery?',
+        answer:
+          'Gallbladder removal is commonly performed as laparoscopic (keyhole) cholecystectomy through small incisions. An open approach may be discussed if keyhole surgery is not safe for an individual patient.',
+      },
+    ],
   },
   {
     id: 'laparoscopic-hernia-surgery',
